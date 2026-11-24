@@ -418,9 +418,10 @@ function genBestFit(){
   const fy=x=>line.m*x+line.c;
   const xOK=x=>{const y=fy(x);return y>cx.y.min+(cx.y.max-cx.y.min)*.08&&y<cx.y.max-(cx.y.max-cx.y.min)*.08};
   let tries=0;do{xq=snap(unif(cx.x.min+xr*.15,cx.x.max-xr*.15),cx.x.minor);tries++}while((!xOK(xq)||pts.some(p=>p[0]==xq))&&tries<50);
+  if(cx.xu==' practice tests')rev=false;
   if(rev){yq=snap(fy(xq),cx.y.major);xq=(yq-line.c)/line.m;if(!xOK(xq)||xq<cx.x.min||xq>cx.x.max)rev=false}
   if(!rev)yq=fy(xq);
-  if(rev)xq=round(xq,1);else yq=cx.yu=='£'?snap(yq,10):round(yq,1);
+  if(rev)xq=round(xq,1);else yq=cx.yu=='£'?snap(yq,100):round(yq,1);
   const yfmt=v=>cx.yu=='£'?'£'+Math.round(v):fmtN(v,1)+cx.yu, xfmt=v=>fmtN(v,1)+cx.xu;
   const fig={type:'scatter',x:cx.x,y:cx.y,pts,line};
   const gfig={...fig,guide:{x:xq,y:yq,rev}};
