@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-title" content="Lena studies">
+<meta name="theme-color" content="#1f45d6">
+<title>Lena studies · Maths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@600&family=Lexend:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a calm, encouraging study notebook for a 13-year-old: clear and friendly, never babyish
+   IDEA: a school exercise book: blue covers with white name labels, squared paper inside, teacher's red pen, yellow highlighter
+   PICTURE: six exercise books on the home page; graphs drawn on squared paper; worked steps written line by line down the page
+   COLOUR and TYPE: biro-blue covers, highlighter yellow, red-pen notes on white squared paper; Lexend headings, Atkinson Hyperlegible body, Caveat handwriting for teacher notes
+   LAYOUT: cover band then a grid of books; topic pages put the learning column beside the practice card, stacked on phones */
+:root{color-scheme:light dark;
+ --bg:light-dark(#ffffff,#0f1320);--grid:light-dark(#edf1fc,#161d2f);--card:light-dark(#ffffff,#161c2c);--ink:light-dark(#151925,#e8ebf4);--muted:light-dark(#566079,#a3abc0);
+ --line:light-dark(#d6dcef,#2c3654);--blue:light-dark(#1f45d6,#86a2ff);--cover:light-dark(#1f45d6,#2445c4);--cover-dk:light-dark(#1536ad,#18318f);
+ --hl:light-dark(#ffe45c,#e9cd45);--hl-ink:#1d1b0e;--red:light-dark(#cf1f3a,#ff7a89);--soft:light-dark(#f3f6ff,#1b2338);
+ --gmin:light-dark(#e6ebf7,#20283e);--gmaj:light-dark(#b8c3e0,#3b4767);--star:light-dark(#e0a100,#ffd34d)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'Atkinson Hyperlegible',system-ui,sans-serif;overflow-x:clip;
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
+h1,h2,h3{font-family:Lexend,system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,5.4vw,48px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:600;margin-bottom:12px}
+h3{font-size:17px;font-weight:600;margin:18px 0 8px}
+a{color:var(--blue)}
+b{font-weight:700}
+sup{font-size:.7em;line-height:0}
+.small,.muted{font-size:14px}.muted{color:var(--muted);margin:-6px 0 10px}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.86em;line-height:1.15;margin:0 .14em}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 .2em}
+.fr>span:last-child{padding:0 .2em}
+i{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.06em}
+.aside{color:var(--muted);font-size:14px}
+
+/* buttons */
+.btn{font:600 15px/1.2 'Atkinson Hyperlegible',system-ui,sans-serif;min-height:44px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--blue)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:light-dark(#fff,#0f1320)}
+.btn:disabled{opacity:.5;cursor:default}
+:is(a,button,input,summary):focus-visible{outline:3px solid var(--hl);outline-offset:2px;border-radius:8px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+/* cover / home */
+.cover{background:var(--cover);color:#fff;padding:clamp(32px,5vw,64px) max(5vw,16px) clamp(36px,5vw,60px);position:relative;
+ box-shadow:inset 0 -10px 0 var(--cover-dk)}
+.cover-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.kicker{margin:0 0 10px;font-size:14px;opacity:.85}
+.lede{max-width:60ch;margin:16px 0 0;font-size:17px;opacity:.95}
+.lede.small{font-size:14px;opacity:.85}
+.label{background:#fff;color:#1b2033;border-radius:10px;padding:14px 20px;transform:rotate(-1.5deg);box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.label div{display:flex;gap:12px;align-items:baseline;border-bottom:1.5px solid #c9d0e6;padding:6px 0}
+.label div:last-child{border-bottom:0}
+.label span{font-size:14px;color:#56607a;width:4.6em;flex:none}
+.label b{font:600 28px/1.1 Caveat,cursive;color:#1f45d6}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px);max-width:1340px;margin:0 auto}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:26px}
+.book{display:flex;flex-direction:column;gap:14px;text-decoration:none;color:#fff;background:var(--cover);border-radius:4px 14px 14px 4px;padding:18px 18px 18px 32px;
+ box-shadow:inset 12px 0 0 var(--cover-dk),5px 5px 0 -1px var(--card),5px 5px 0 0 var(--line),9px 9px 0 -1px var(--card),9px 9px 0 0 var(--line);transition:transform .18s ease}
+.book:hover{transform:translateY(-3px)}
+.book-lab{background:#fff;color:#1b2033;border-radius:8px;padding:10px 14px;display:flex;gap:12px;align-items:center}
+.bn{font:700 22px/1 Lexend,sans-serif;color:#fff;background:#1f45d6;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;flex:none}
+.bt{font:600 22px/1.15 Lexend,sans-serif}
+.book-skills{display:flex;flex-direction:column;gap:4px;font-size:15px}
+.bs{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid rgba(255,255,255,.22);padding:3px 0}
+.book .stars span{color:rgba(255,255,255,.35)}.book .stars .on{color:var(--hl)}
+.meter{height:10px;background:rgba(255,255,255,.22);border-radius:6px;overflow:hidden;margin-top:auto}
+.meter i{display:block;height:100%;background:var(--hl);border-radius:6px}
+.mtxt{font-size:14px;opacity:.9;margin-top:-6px}
+.sheet-link{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;align-items:center;margin-top:34px;padding:18px 22px;border-radius:14px;
+ background:var(--card);border:1.5px solid var(--line);text-decoration:none;color:var(--ink)}
+.sheet-link b{font:600 22px/1.2 Lexend,sans-serif}
+.sheet-link b{background:linear-gradient(transparent 58%,var(--hl) 58%);justify-self:start;padding:0 2px}
+:root[data-theme=dark] .sheet-link b,.sheet-link b{color:inherit}
+.sheet-link span{color:var(--muted);font-size:15px}
+.sheet-link .arrow{grid-row:1/3;grid-column:2;font-size:28px;color:var(--blue)}
+
+/* topic */
+.wrap{max-width:1240px;margin:0 auto;padding:22px max(4vw,16px) 64px}
+.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+.t-head{display:flex;align-items:center;gap:14px;margin:6px 0 18px}
+.tn{font:700 26px/1 Lexend,sans-serif;color:#fff;background:var(--cover);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;flex:none}
+.tn.sm{width:34px;height:34px;font-size:17px;display:inline-grid;vertical-align:middle;margin-right:6px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-weight:700;font-size:15px}
+.tab.on{background:var(--blue);border-color:var(--blue);color:light-dark(#fff,#0f1320)}
+.tab.on .stars span{color:rgba(255,255,255,.4)}.tab.on .stars .on{color:var(--hl)}
+:root[data-theme=dark] .tab.on .stars span{color:rgba(0,0,0,.3)}
+.stars{white-space:nowrap;letter-spacing:1px;font-size:14px}.stars span{color:var(--line)}.stars .on{color:var(--star)}
+.remember{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:22px}
+.remember summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:600 18px/1.3 Lexend,sans-serif;padding:8px 0}
+.remember summary::marker{color:var(--blue)}
+.rem{margin:0;padding:0 0 14px;list-style:none;columns:2 340px;column-gap:36px}
+.rem li{break-inside:avoid;padding:7px 0 7px 22px;position:relative;border-bottom:1px dashed var(--line)}
+.rem li::before{content:'';position:absolute;left:2px;top:15px;width:9px;height:9px;border-radius:2px;background:var(--hl)}
+.skill-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0 26px}
+@media(min-width:980px){.skill-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:20px}
+.goal{margin:0 0 18px;font-size:17px;padding:12px 16px;border-radius:10px;background:var(--soft)}
+.goal span{display:block;font-size:14px;color:var(--blue);font-weight:700}
+.method{counter-reset:m;list-style:none;margin:0;padding:0}
+.method li{counter-increment:m;position:relative;padding:6px 0 10px 44px}
+.method li::before{content:counter(m);position:absolute;left:0;top:4px;width:30px;height:30px;border-radius:50%;background:var(--blue);color:light-dark(#fff,#0f1320);font:700 15px/30px Lexend,sans-serif;text-align:center}
+.q{font-size:17px;padding:2px 0 2px 14px;border-left:4px solid var(--blue);margin-bottom:12px;line-height:1.7}
+.choices{display:flex;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--muted);align-items:center;margin:0 0 8px}
+.choices span{border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.steps{list-style:none;counter-reset:s;margin:10px 0 0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:10px 0 10px 40px;border-top:1px dashed var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;border:2px solid var(--blue);color:var(--blue);font:700 14px/22px Lexend,sans-serif;text-align:center}
+.st-t{display:block;font-size:14px;color:var(--muted);font-weight:700}
+.st-m{display:block;font-size:17px;line-height:1.8}
+.steps li.new{animation:in .28s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.steps li.new{animation:none}.book{transition:none}}
+.watch .note{padding:8px 0 8px 16px;border-left:3px solid var(--line);margin:10px 0}
+.watch .note p{margin:0}
+.watch .note.her{border-left-color:var(--red)}
+.from{display:block;font:600 22px/1 Caveat,cursive;color:var(--red);margin-bottom:4px}
+.watch.big{margin-top:6px}
+.sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:0 20px}
+.sheet .rem{columns:1}
+
+/* practice */
+.pr{border-color:var(--blue);border-width:2px}
+.pr-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.pr-head h2{margin:0}
+.tag{font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--blue)}
+.pr-stars{margin-left:auto;font-size:18px}.pr-stars .stars{font-size:18px}
+.ans label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+.unit{color:var(--muted);font-weight:400}
+.row{display:flex;gap:8px}
+.row input{flex:1;font:18px 'Atkinson Hyperlegible',system-ui,sans-serif;min-height:48px;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.row input:focus{border-color:var(--blue);outline:none}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.key{min-width:44px;min-height:44px;border-radius:8px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink);font:700 18px system-ui;cursor:pointer}
+.hint{font-size:14px;color:var(--muted);margin:8px 0 0}
+.mcq{display:grid;gap:8px}
+.opt{text-align:left;min-height:48px;padding:10px 14px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:600 16px/1.3 'Atkinson Hyperlegible',system-ui,sans-serif;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt.right{background:var(--hl);border-color:var(--hl);color:var(--hl-ink)}
+.opt.wrong{border-color:var(--red);color:var(--red);text-decoration:line-through;opacity:1}
+.opt:disabled{cursor:default}
+.fb:empty{display:none}
+.fb{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:16px}
+.fb.ok{background:var(--hl);color:var(--hl-ink)}
+.fb.ok .btn.pri{background:#1f45d6;border-color:#1f45d6;color:#fff;margin-top:10px}
+.fb.nearly{border:2px dashed var(--hl);background:var(--soft)}
+.fb.no,.fb.bad{border-left:4px solid var(--red);background:var(--soft)}
+.fb.no b,.fb.bad b{color:var(--red)}
+.plus{font-weight:700;white-space:nowrap}
+
+/* graphs */
+.fig{position:relative;width:100%;min-height:240px;margin:6px 0 10px;background:var(--card);border-radius:8px}
+.fig svg{position:absolute;inset:0;display:block}
+.gm{stroke:var(--gmin);stroke-width:1}.gM{stroke:var(--gmaj);stroke-width:1}
+.ax{stroke:var(--ink);stroke-width:1.6}
+.tk{fill:var(--muted);font:12px 'Atkinson Hyperlegible',system-ui,sans-serif}
+.al{fill:var(--ink);font:700 13px 'Atkinson Hyperlegible',system-ui,sans-serif}
+.pt{stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.lbf{stroke:var(--blue);stroke-width:2.6}
+.gd{fill:none;stroke:var(--red);stroke-width:2.2;stroke-dasharray:7 5}
+.gdot{fill:var(--red)}
+.ptag{fill:var(--red);font:700 16px Lexend,sans-serif;paint-order:stroke;stroke:var(--card);stroke-width:4px}
+.path{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round}
+.hi{stroke:var(--hl);stroke-width:12;stroke-linecap:round}
+.node{fill:var(--ink)}
+
+@media(max-width:700px){.cover-in{grid-template-columns:minmax(0,1fr)}.label{max-width:320px;order:-1}}
+@media(max-width:600px){body{font-size:16px}.card{padding:16px}.row{flex-wrap:wrap}.row .btn{flex:1}.book{padding-left:28px}}
+.nw{white-space:nowrap}
+.jump{display:none;margin-top:8px;font:700 15px 'Atkinson Hyperlegible',system-ui,sans-serif;color:var(--blue);background:none;border:0;padding:0;min-height:44px;cursor:pointer}
+@media(max-width:979px){.jump{display:block}}
+
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+(function(){
+/* ================= ENGINE: maths helpers, display, parsing, checking ================= */
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){const t=a%b;a=b;b=t}return a};
+let RND=Math.random;
+const ri=(a,b)=>a+Math.floor(RND()*(b-a+1));
+const pick=a=>a[Math.floor(RND()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(RND()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a};
+const coin=(p=.5)=>RND()<p;
+function seeded(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function withSeed(seed,fn){const old=RND;RND=seeded(seed);try{return fn()}finally{RND=old}}
+
+/* rationals */
+const R=(n,d=1)=>{if(d<0){n=-n;d=-d}const g=gcd(n,d)||1;return{n:n/g,d:d/g}};
+const rmul=(a,b)=>R(a.n*b.n,a.d*b.d), rdiv=(a,b)=>R(a.n*b.d,a.d*b.n),
+      radd=(a,b)=>R(a.n*b.d+b.n*a.d,a.d*b.d), rsub=(a,b)=>R(a.n*b.d-b.n*a.d,a.d*b.d);
+const rval=r=>r.n/r.d;
+
+/* display */
+const MI='−';
+const sg=n=>n<0?MI+Math.abs(n):''+n;
+const round=(x,dp)=>Math.round((x+Number.EPSILON*Math.sign(x))*10**dp)/10**dp;
+const fmtN=(x,dp=4)=>{const s=''+round(x,dp);return s.replace('-',MI)};
+const money=x=>'£'+round(x,2).toFixed(2);
+const moneyQ=x=>Math.abs(x-Math.round(x))<1e-9?'£'+Math.round(x):money(x);
+const fr=(n,d)=>d==1?sg(n):`${n<0?MI:''}<span class="fr"><span>${Math.abs(n)}</span><span>${d}</span></span>`;
+const frR=r=>fr(r.n,r.d);
+function mixed(r){if(r.d==1)return sg(r.n);const neg=r.n<0,a=Math.abs(r.n);if(a<r.d)return fr(r.n,r.d);
+  const w=Math.floor(a/r.d),m=a%r.d;return(neg?MI:'')+w+fr(m,r.d)}
+function mixedTxt(r){if(r.d==1)return''+r.n;const neg=r.n<0,a=Math.abs(r.n);if(a<r.d)return(neg?'-':'')+a+'/'+r.d;
+  const w=Math.floor(a/r.d),m=a%r.d;return(neg?'-':'')+w+' '+m+'/'+r.d}
+const V=v=>`<i>${v}</i>`;
+/* a term c·v^e as html; opts.first=true means no leading plus */
+function termH(c,e,v,first){
+  const a=Math.abs(c);let body=(e>0&&a==1)?'':''+a;
+  if(e==1)body+=V(v);else if(e>1)body+=V(v)+'<sup>'+e+'</sup>';
+  if(first)return(c<0?MI:'')+body;
+  return(c<0?' '+MI+' ':' + ')+body;
+}
+/* list of [c,e] -> html, keeping order */
+function termsH(list,v){let s='',first=true;for(const[c,e]of list){if(!c)continue;s+=termH(c,e,v,first);first=false}return s||'0'}
+function termsA(list,v){return list.filter(t=>t[0]).map(([c,e])=>(c<0?'-':'+')+Math.abs(c)+(e?'*'+v+(e>1?'^'+e:''):'')).join('').replace(/^\+/,'')||'0'}
+/* collect like terms: returns list sorted by descending power */
+function collect(list){const m={};for(const[c,e]of list)m[e]=(m[e]||0)+c;return Object.keys(m).map(Number).sort((a,b)=>b-a).map(e=>[m[e],e]).filter(t=>t[0])}
+const mono=(c,e,v)=>termH(c,e,v,true);
+const bracket=s=>'('+s+')';
+const sgnTerm=c=>c<0?` ${MI} ${Math.abs(c)}`:` + ${c}`;
+
+/* ---------- answer parsing ---------- */
+const UNI={'½':'1/2','¼':'1/4','¾':'3/4','⅓':'1/3','⅔':'2/3','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'};
+function decToR(str){const neg=str.startsWith('-');str=str.replace('-','');const k=(str.split('.')[1]||'').length;
+  const n=Math.round(parseFloat(str)*10**k);return R(neg?-n:n,10**k)}
+function parseNum(s){
+  if(s==null)return null;
+  s=(''+s).toLowerCase().replace(/[−–—]/g,'-').replace(/,/g,'').replace(/£/g,'').trim();
+  s=s.replace(/^[a-z]\s*=\s*/,'');
+  s=s.replace(/(\d)\s*([½¼¾⅓⅔⅛⅜⅝⅞])/g,(m,a,b)=>a+' '+UNI[b]).replace(/[½¼¾⅓⅔⅛⅜⅝⅞]/g,m=>UNI[m]);
+  s=s.replace(/^-\s+/,'-');
+  let m,out;
+  if(m=s.match(/^(-?)(\d+)\s+(\d+)\s*\/\s*(\d+)/)){
+    const w=+m[2],a=+m[3],b=+m[4];if(!b)return null;
+    out={form:'mixed',w,a,b,r:R((m[1]?-1:1)*(w*b+a),b)};
+  }else if(m=s.match(/^(-?\d*\.?\d+)\s*\/\s*(-?\d*\.?\d+)/)){
+    const a=m[1],b=m[2];if(!parseFloat(b))return null;
+    if(a.includes('.')||b.includes('.')){const r=rdiv(decToR(a),decToR(b));out={form:'decfrac',r}}
+    else out={form:'frac',a:+a,b:+b,r:R(+a,+b)};
+  }else if(m=s.match(/^(-?\d*\.?\d+)/)){
+    out={form:m[1].includes('.')?'dec':'int',r:decToR(m[1]),raw:m[1]};
+  }else return null;
+  const rest=s.slice(m[0].length);
+  if(/\d/.test(rest))out.extra=rest;
+  out.v=rval(out.r);return out;
+}
+function parseTimeMin(s){ // "2 h 40 min" / "2 hours 40" -> minutes
+  s=(''+s).toLowerCase();let m=s.match(/(\d+(?:\.\d+)?)\s*h[a-z]*\s*(?:and\s*)?(\d+)?\s*(m|$)/);
+  if(m)return parseFloat(m[1])*60+(m[2]?+m[2]:0);return null}
+
+/* ---------- expression parsing (single bracket algebra) ---------- */
+function parseExpr(src){
+  let s=(''+src).toLowerCase().replace(/\s+/g,'').replace(/[−–]/g,'-').replace(/[×·]/g,'*').replace(/÷/g,'/')
+    .replace(/²/g,'^2').replace(/³/g,'^3');
+  s=s.replace(/^[a-z]=/,'');
+  if(!s)throw 0;
+  const toks=s.match(/\d+(\.\d+)?|[a-z]|[+\-*/^()]/g)||[];
+  if(toks.join('')!==s)throw 0;
+  let i=0,letterDigit=false,vars=new Set();
+  const peek=()=>toks[i],next=()=>toks[i++];
+  const isAtomStart=t=>t!=null&&(/^[\d.]/.test(t)||/^[a-z]$/.test(t)||t=='(');
+  function expr(){const terms=[];let sign=1;
+    if(peek()=='+'||peek()=='-'){sign=next()=='-'?-1:1}
+    terms.push([sign,term()]);
+    while(peek()=='+'||peek()=='-'){const sgn=next()=='-'?-1:1;terms.push([sgn,term()])}
+    const f=env=>terms.reduce((a,[s2,t])=>a+s2*t(env),0);f.n=terms.length;return f}
+  function term(){let f=factor();
+    for(;;){const t=peek();
+      if(t=='*'||t=='/'){next();const g=factor(),h=f;f=t=='*'?(e=>h(e)*g(e)):(e=>h(e)/g(e))}
+      else if(isAtomStart(t)){const g=factor(),h=f;f=e=>h(e)*g(e)}
+      else break}
+    return f}
+  function factor(){if(peek()=='-'){next();const g=factor();return e=>-g(e)}if(peek()=='+'){next();return factor()}return power()}
+  function power(){const a=atom();if(peek()=='^'){next();const b=factor();return e=>Math.pow(a(e),b(e))}return a}
+  function atom(){const t=next();if(t==null)throw 0;
+    if(/^[\d.]/.test(t)){const v=parseFloat(t);return()=>v}
+    if(/^[a-z]$/.test(t)){vars.add(t);if(peek()&&/^[\d.]/.test(peek()))letterDigit=true;return e=>e[t]}
+    if(t=='('){const g=expr();if(next()!=')')throw 0;return g}
+    throw 0}
+  const f=expr();if(i<toks.length)throw 0;
+  return{f,n:f.n,vars,letterDigit,hasBracket:s.includes('('),s};
+}
+const PTS=[1.37,-2.21,0.53,3.17,-1.61];
+function equiv(a,b,v){for(const x of PTS){const e={};e[v]=x;const p=a.f(e),q=b.f(e);if(!isFinite(p)||Math.abs(p-q)>1e-7*Math.max(1,Math.abs(q)))return false}return true}
+
+/* ---------- checking ---------- */
+function matchWrong(q,val,inputExpr){
+  for(const w of q.wrong||[]){
+    if(w.expr&&inputExpr){try{if(equiv(inputExpr,parseExpr(w.expr),q.v))return w.msg}catch(e){}}
+    if(w.v!=null&&val!=null&&Math.abs(val-w.v)<=(q.tol||1e-9)+1e-9)return w.msg}
+  return null}
+function check(q,input){
+  input=(input||'').trim();
+  if(q.kind=='mcq'){return input==q.ans?{s:'ok'}:{s:'no',msg:(q.why&&q.why[input])||'Look again, or press “Show next step”.'}}
+  if(!input)return{s:'empty',msg:'Type your answer first.'};
+  if(q.kind=='expr'){
+    let p;try{p=parseExpr(input)}catch(e){return{s:'bad',msg:'I couldn’t read that. Type powers as x^2 (or x²), for example 6x^2 − 2x.'}}
+    if(p.letterDigit)return{s:'nearly',msg:'Write the number before the letter, like 4w (not w4). For a power, type w^2.'};
+    for(const x of p.vars)if(x!==q.v)return{s:'no',msg:`Use the letter ${q.v} only.`};
+    const target=parseExpr(q.ans);
+    if(!equiv(p,target,q.v)){const w=matchWrong(q,null,p);return{s:'no',msg:w||'Check each multiplication again, especially the signs.'}}
+    if(q.mode=='factorise'){
+      const m=p.s.match(/^(.*?)\((.+)\)$/);
+      if(!m)return{s:'nearly',msg:'That’s equal, but it isn’t factorised. Take the common factor outside a bracket.'};
+      let pre=m[1]||'1';if(pre=='-')pre='-1';if(pre.endsWith('*'))pre=pre.slice(0,-1);
+      try{const pp=parseExpr(pre),h=parseExpr(q.hcf),nh=parseExpr('-('+q.hcf+')');
+        if(equiv(pp,h,q.v)||equiv(pp,nh,q.v))return{s:'ok'}}catch(e){}
+      return{s:'nearly',msg:'That’s equal, but not fully factorised. Is there a bigger common factor you can take out?'}}
+    if(p.hasBracket)return{s:'nearly',msg:'That’s equal, but it still has brackets. Multiply them out.'};
+    if(p.n>q.terms)return{s:'nearly',msg:'Right idea. Now collect the like terms so it’s fully simplified.'};
+    return{s:'ok'}}
+  let p=parseNum(input);
+  if(q.unit=='min'){const t=parseTimeMin(input);if(t!=null)p={v:t,r:decToR(''+t),form:'dec'}}
+  if(!p)return{s:'bad',msg:'Type a number, like 12, 3.5, 7/3 or 2 1/3.'};
+  if(q.kind=='rat'){
+    const a=q.ans,r=p.r,eq=r.n*a.d===a.n*r.d;
+    if(eq){
+      if(p.form=='frac'&&gcd(p.a,p.b)!==1){const g=gcd(p.a,p.b);return{s:'nearly',msg:`That’s the right value. Now simplify it: divide the top and bottom by ${g}.`}}
+      if(p.form=='mixed'&&(p.a>=p.b||gcd(p.a,p.b)!==1))return{s:'nearly',msg:'Right value. Simplify the fraction part fully.'};
+      if((p.form=='dec'||p.form=='decfrac')&&a.d!=1&&!q.allowDec)return{s:'nearly',msg:'Right value! Now write it as a fraction.'};
+      if(p.form=='frac'&&Math.abs(a.n)>a.d&&q.preferMixed)return{s:'ok',note:`As a mixed number that’s ${mixed(a)}.`};
+      return{s:'ok'}}
+    if(a.d!=1&&Math.abs(p.v-rval(a))<0.006)return{s:'nearly',msg:'Very close. Give the exact answer as a fraction instead of a rounded decimal.'};
+    const w=matchWrong(q,p.v);if(w)return{s:'no',msg:w};
+    if(Math.abs(p.v+rval(a))<1e-9)return{s:'no',msg:'Right size, wrong sign. Check your positives and negatives.'};
+    if(r.n&&R(r.d,r.n).n*a.d===a.n*R(r.d,r.n).d)return{s:'no',msg:'Looks like your fraction is upside down.'};
+    return{s:'no',msg:'Try again, or press “Show next step”.'}}
+  // numeric
+  const tol=q.tol||1e-9,v=p.v;
+  if(Math.abs(v-q.ans)<=tol+1e-9){
+    if(q.money&&/\.\d$/.test(p.raw||''))return{s:'ok',note:`Money always has 2 decimal places: ${money(q.ans)}.`};
+    return{s:'ok'}}
+  const w=matchWrong(q,v);if(w)return{s:'no',msg:w};
+  if(q.near&&Math.abs(v-q.ans)<=q.near)return{s:'nearly',msg:q.nearMsg||'Very close. Check your rounding.'};
+  if(Math.abs(v+q.ans)<=tol)return{s:'no',msg:'Right size, wrong sign. Check your positives and negatives.'};
+  return{s:'no',msg:'Try again, or press “Show next step”.'}
+}
+const st=(t,m,fig)=>({t,m,fig});
+
+/* ================= CONTENT: topics 1–3 ================= */
+const NAMES=['Maya','Sam','Ollie','Priya','Leo','Zara','Ben','Ava','Noah','Isla','Tom','Ruby'];
+const two=()=>{const s=shuffle(NAMES);return[s[0],s[1],s[2]]};
+const fx=(top,bot)=>`<span class="fr"><span>${top}</span><span>${bot}</span></span>`;
+const times=' × ',divs=' ÷ ';
+
+/* ---------- Topic 1: scatter graphs ---------- */
+const CTX=[
+ {x:{min:0,max:10,major:1,minor:.5,label:'Hours of revision'},y:{min:0,max:100,major:10,minor:5,label:'Test score (%)'},m:[6,8],c:[14,28],noise:7,xs:'hours of revision',ys:'test score',xu:' hours',yu:'%',reason:'the pupil may have been ill on the day of the test',who:'a pupil who revised for'},
+ {x:{min:0,max:10,major:1,minor:.5,label:'Age of car (years)'},y:{min:0,max:10000,major:1000,minor:500,label:'Value (£)'},m:[-900,-750],c:[9200,9800],noise:600,xs:'age of the car',ys:'value',xu:' years',yu:'£',reason:'the car may have been damaged or in poor condition',who:'a car that is'},
+ {x:{min:0,max:30,major:5,minor:1,label:'Temperature (°C)'},y:{min:0,max:60,major:10,minor:2,label:'Ice creams sold'},m:[1.4,1.8],c:[2,8],noise:4,xs:'temperature',ys:'number of ice creams sold',xu:'°C',yu:'',reason:'there may have been a special event at the beach that day',who:'a day when the temperature is'},
+ {x:{min:0,max:10,major:1,minor:.5,label:'Number of practice tests'},y:{min:40,max:50,major:1,minor:.5,label:'Real test score'},m:[.6,.8],c:[40.6,41.4],noise:.7,xs:'number of practice tests',ys:'real test score',xu:' practice tests',yu:'',reason:'the person may have been very nervous, or had lots of practice in another way',who:'a person who did'},
+ {x:{min:0,max:10,major:1,minor:.5,label:'Hours on phone'},y:{min:0,max:100,major:10,minor:5,label:'Battery left (%)'},m:[-9,-7],c:[94,100],noise:6,xs:'hours spent on the phone',ys:'battery left',xu:' hours',yu:'%',reason:'the phone may have been charged during the day',who:'a phone used for'},
+ {x:{min:0,max:8,major:1,minor:.5,label:'People in household'},y:{min:0,max:400,major:50,minor:10,label:'Water used (litres per day)'},m:[40,46],c:[20,40],noise:22,xs:'number of people in the household',ys:'amount of water used',xu:' people',yu:' litres',reason:'that house may have a leak, or filled a paddling pool',who:'a household with'},
+];
+const NONE_CTX=[
+ {x:{min:0,max:100,major:10,minor:5,label:'House number'},y:{min:0,max:100,major:10,minor:5,label:'Maths score (%)'}},
+ {x:{min:0,max:31,major:5,minor:1,label:'Day of month born'},y:{min:130,max:180,major:10,minor:2,label:'Height (cm)'}},
+ {x:{min:0,max:60,major:10,minor:5,label:'Hair length (cm)'},y:{min:0,max:100,major:10,minor:5,label:'Test score (%)'}},
+];
+const unif=(a,b)=>a+RND()*(b-a);
+const snap=(v,s)=>Math.round(v/s)*s;
+function scatterPts(cx,n,line){
+  const xs=[],slots=[];for(let v=cx.x.min+cx.x.minor;v<=cx.x.max-cx.x.minor+1e-9;v+=cx.x.minor)slots.push(+v.toFixed(4));
+  const pts=[];const chosen=shuffle(slots).slice(0,n);
+  const yr=cx.y.max-cx.y.min,lo=cx.y.min+yr*.04,hi=cx.y.max-yr*.04;
+  for(const x of chosen){let y=line?line.m*x+line.c+unif(-1,1)*cx.noise:unif(lo,hi);
+    y=Math.min(hi,Math.max(lo,snap(y,cx.y.minor/2)));pts.push([x,y])}
+  return pts.sort((a,b)=>a[0]-b[0])}
+function ctxLine(cx){const m=+unif(cx.m[0],cx.m[1]).toFixed(3);const c=+unif(cx.c[0],cx.c[1]).toFixed(2);return{m,c}}
+
+const STATEMENTS=[
+ ['the temperature outside','the number of ice creams sold','pos','The hotter it is, the more ice creams are sold.'],
+ ['the temperature outside','the number of scarves sold','neg','The hotter it is, the fewer scarves are sold.'],
+ ['the hours spent revising','the test score','pos','The more you revise, the higher your score tends to be.'],
+ ['the age of a car','its value','neg','The older the car, the less it is worth.'],
+ ['a person’s height','their shoe size','pos','Taller people tend to have bigger feet.'],
+ ['the speed of a car','the time a journey takes','neg','The faster the car, the less time the journey takes.'],
+ ['the number of people in a house','the amount of water used','pos','More people use more water.'],
+ ['the hours a phone is used','the battery left','neg','The longer it’s used, the less battery is left.'],
+ ['hours of piano practice','the number of mistakes made','neg','More practice means fewer mistakes.'],
+ ['the number of pages in a book','the time it takes to read','pos','Longer books take longer to read.'],
+ ['a pupil’s house number','their maths score','none','House numbers have nothing to do with maths scores.'],
+ ['the day of the month you were born','your height','none','Your birthday doesn’t affect your height.'],
+ ['the length of a person’s hair','their test score','none','Hair length has nothing to do with test scores.'],
+];
+const CORR={pos:'Positive',neg:'Negative',none:'No correlation'};
+const CORR_CH=['Positive','Negative','No correlation'];
+
+function genCorrelation(){
+  if(coin(.45)){const[a,b,t,mean]=pick(STATEMENTS);
+    return{q:`What type of correlation would you expect between <b>${a}</b> and <b>${b}</b>?`,kind:'mcq',choices:CORR_CH,ans:CORR[t],
+      steps:[st('Ask: when the first one goes up, what happens to the second?',mean),
+             st('So the correlation is…',`<b>${CORR[t]}</b>${t=='none'?'':' correlation'}`)]}}
+  const t=pick(['pos','neg','none']);let cx,line=null,pts;
+  if(t=='none'){cx=pick(NONE_CTX);pts=scatterPts(cx,ri(12,16),null)}
+  else{cx=pick(CTX.filter(c=>(c.m[0]>0)==(t=='pos')));line=ctxLine(cx);pts=scatterPts(cx,ri(11,14),line)}
+  const xs=cx.xs||cx.x.label.toLowerCase(),ys=cx.ys||cx.y.label.toLowerCase();
+  const words=t=='none'?`There is no relationship between the ${xs} and the ${ys}.`:`As the ${xs} increases, the ${ys} ${t=='pos'?'increases':'decreases'}.`;
+  return{q:'What type of correlation does this scatter graph show?',fig:{type:'scatter',x:cx.x,y:cx.y,pts},kind:'mcq',choices:CORR_CH,ans:CORR[t],
+    steps:[st('Read the points from left to right.',t=='pos'?'The points go <b>up</b> ↗':t=='neg'?'The points go <b>down</b> ↘':'The points are spread everywhere, with no clear direction.'),
+           st('So the correlation is…',`<b>${CORR[t]}</b>${t=='none'?'':' correlation'}`),
+           st('Say what it means, using the labels:',words)]}
+}
+function genBestFit(){
+  const cx=pick(CTX),line=ctxLine(cx),pts=scatterPts(cx,ri(10,12),line);
+  const xr=cx.x.max-cx.x.min;let xq,yq,rev=coin(.3);
+  const fy=x=>line.m*x+line.c;
+  const xOK=x=>{const y=fy(x);return y>cx.y.min+(cx.y.max-cx.y.min)*.08&&y<cx.y.max-(cx.y.max-cx.y.min)*.08};
+  let tries=0;do{xq=snap(unif(cx.x.min+xr*.15,cx.x.max-xr*.15),cx.x.minor);tries++}while((!xOK(xq)||pts.some(p=>p[0]==xq))&&tries<50);
+  if(rev){yq=snap(fy(xq),cx.y.major);xq=(yq-line.c)/line.m;if(!xOK(xq)||xq<cx.x.min||xq>cx.x.max)rev=false}
+  if(!rev)yq=fy(xq);
+  if(rev)xq=round(xq,1);else yq=cx.yu=='£'?snap(yq,10):round(yq,1);
+  const yfmt=v=>cx.yu=='£'?'£'+Math.round(v):fmtN(v,1)+cx.yu, xfmt=v=>fmtN(v,1)+cx.xu;
+  const fig={type:'scatter',x:cx.x,y:cx.y,pts,line};
+  const gfig={...fig,guide:{x:xq,y:yq,rev}};
+  if(!rev)return{q:`The line of best fit has been drawn. Use it to estimate the <b>${cx.ys}</b> for ${cx.who} <b>${xfmt(xq)}</b>.`,fig,kind:'num',ans:yq,tol:cx.y.minor,near:cx.y.minor*2,unit:cx.yu,
+    nearMsg:'Close. Check what one small square is worth on the up-the-side axis.',
+    steps:[st(`Find ${xfmt(xq)} on the bottom axis.`,`${cx.x.label}: ${fmtN(xq)}`),
+           st('Go straight up to the line, then straight across to the side axis.','Follow the dashed line:',gfig),
+           st('Read the scale carefully.',`One small square on the side is worth ${cx.yu=='£'?'£':''}${fmtN(cx.y.minor)}. The line meets the axis at about <b>${yfmt(yq)}</b>.`)]};
+  return{q:`The line of best fit has been drawn. Use it to estimate the <b>${cx.xs}</b> when the ${cx.ys} is <b>${yfmt(yq)}</b>.`,fig,kind:'num',ans:xq,tol:cx.x.minor,near:cx.x.minor*2,
+    nearMsg:'Close. Check what one small square is worth on the bottom axis.',
+    steps:[st(`Find ${yfmt(yq)} on the side axis.`,`${cx.y.label}: ${fmtN(yq)}`),
+           st('Go straight across to the line, then straight down to the bottom axis.','Follow the dashed line:',gfig),
+           st('Read the scale carefully.',`One small square along the bottom is worth ${fmtN(cx.x.minor)}. The line meets the axis at about <b>${xfmt(xq)}</b>.`)]};
+}
+function genOutlier(){
+  const cx=pick(CTX),line=ctxLine(cx),pts=scatterPts(cx,ri(10,12),line);
+  const yr=cx.y.max-cx.y.min,mid=pts.filter(p=>p[0]>cx.x.min+(cx.x.max-cx.x.min)*.2&&p[0]<cx.x.max-(cx.x.max-cx.x.min)*.2);
+  const o=pick(mid.length?mid:pts);const base=line.m*o[0]+line.c;
+  let oy=base-yr*unif(.35,.45);if(oy<cx.y.min+yr*.05)oy=base+yr*unif(.35,.45);
+  o[1]=Math.min(cx.y.max-yr*.04,Math.max(cx.y.min+yr*.04,snap(oy,cx.y.minor/2)));
+  const others=shuffle(pts.filter(p=>p!==o)).slice(0,3);const letters=shuffle(['A','B','C','D']);
+  const tags=[o,...others].map((p,i)=>({x:p[0],y:p[1],t:letters[i]}));
+  const ans=letters[0];const below=o[1]<base;
+  return{q:'Which labelled point is the outlier?',fig:{type:'scatter',x:cx.x,y:cx.y,pts,tags},kind:'mcq',choices:['A','B','C','D'],ans,
+    steps:[st('Picture the line of best fit through the middle of the points.','Here it is, drawn in:',{type:'scatter',x:cx.x,y:cx.y,pts,tags,line}),
+           st('Find the point that is far away from the line.',`Point <b>${ans}</b> is a long way ${below?'below':'above'} the line. It doesn’t follow the pattern.`),
+           st('Give a real-life reason.',`For example: ${cx.reason}.`)]};
+}
+
+const T1={id:'scatter',n:1,title:'Scatter graphs',
+ remember:[
+  'A scatter graph shows whether there is a <b>relationship</b> (correlation) between two sets of data.',
+  '<b>Positive</b>: both go up together ↗. <b>Negative</b>: one goes up, the other goes down ↘. <b>No correlation</b>: no pattern.',
+  'Explain correlation in words, using the labels: “As the age of the car increases, its value decreases.”',
+  'Plotting a point: go <b>along</b> to the first number, then <b>up</b> to the second, and mark a small ×.',
+  'Line of best fit: one straight ruler line through the <b>middle</b> of the points, with about the same number on each side. Ignore outliers.',
+  'Estimating: go from the value you know to the line, then across to the other axis. Check what one small square is worth.',
+  '<b>Outlier</b>: a point far from the line that doesn’t follow the trend. Give a real-life reason for it.'],
+ skills:[
+  {id:'correlation',title:'Spot the correlation',goal:'Identify positive, negative and no correlation, and explain what it means.',
+   method:['Read the graph from <b>left to right</b>, like reading a sentence.',
+     'Points going <b>up</b> → <b>positive</b>. Points going <b>down</b> → <b>negative</b>. No clear direction → <b>no correlation</b>.',
+     'Explain it in a sentence using the real labels: “As the <i>temperature</i> increases, <i>soup sales</i> decrease.”'],
+   watch:[{her:1,t:'On the revision question you first wrote <b>negative</b>, then fixed it to <b>positive</b>. More revision goes with higher scores, so the points go up and the correlation is positive.'},
+     {t:'“Negative” doesn’t mean bad. It just means that as one goes up, the other goes down.'}],
+   gen:genCorrelation},
+  {id:'bestfit',title:'Line of best fit',goal:'Draw a line of best fit, and use it to estimate missing data.',
+   method:['Only draw a line of best fit if there <b>is</b> correlation.',
+     'Use a ruler. One straight line through the middle of the points, with roughly the same number above and below. It doesn’t have to start at 0.',
+     'To estimate, find the value you know on its axis.',
+     'Go straight to the line, then turn and go straight to the other axis. Draw these lines on the graph.',
+     'Before reading the number, work out what <b>one small square</b> is worth.'],
+   watch:[{her:1,t:'For the 6-year-old car you wrote <b>£5000</b>, but reading from the line gives <b>£4000</b>. Draw the lines on with a ruler, and check the scale. On that graph each big square was £1000.'},
+     {t:'Read from the <b>line</b>, not from the nearest cross.'}],
+   gen:genBestFit},
+  {id:'outliers',title:'Outliers',goal:'Spot the point that doesn’t fit, and give a reason for it.',
+   method:['Picture (or draw) the line of best fit.','The outlier is the point a long way from the line that doesn’t follow the pattern.',
+     'Give a reason that makes sense in <b>real life</b>, e.g. “the car may have been in an accident”.','Leave the outlier out when you draw the line of best fit.'],
+   watch:[{her:1,t:'For the outlier car, your reason “cheap car / not in good condition” got the mark ✓. “It’s not in the general flow” only describes the graph, so it didn’t score. The mark is for a real-life reason.'}],
+   gen:genOutlier}]};
+
+/* ---------- Topic 2: fractions ---------- */
+function cancelAll(F){const notes=[];F=F.map(f=>f.slice());
+  for(let i=0;i<F.length;i++)for(let j=0;j<F.length;j++){const g=gcd(F[i][0],F[j][1]);
+    if(g>1){notes.push(`${F[i][0]} and ${F[j][1]} both divide by ${g} → ${F[i][0]/g} and ${F[j][1]/g}`);F[i][0]/=g;F[j][1]/=g}}
+  return{F,notes}}
+const prodH=F=>F.map(f=>fr(f[0],f[1])).join(times);
+function multSteps(F){ // F already top-heavy, steps for cancel + multiply + simplify
+  const steps=[];const{F:G,notes}=cancelAll(F);
+  if(notes.length)steps.push(st('Cancel first: any top with any bottom.',notes.join('<br>')+'<br>'+prodH(G)));
+  const n=G.reduce((a,f)=>a*f[0],1),d=G.reduce((a,f)=>a*f[1],1);const r=R(n,d);
+  steps.push(st('Multiply the tops, and multiply the bottoms.',`${fx(G.map(f=>f[0]).join(' × '),G.map(f=>f[1]).join(' × '))} = ${fr(n,d)}`));
+  if(r.d!=d)steps.push(st('Simplify.',`${fr(n,d)} = ${frR(r)}`));
+  if(Math.abs(r.n)>r.d&&r.d!=1){const w=Math.floor(r.n/r.d);steps.push(st('Change back to a mixed number.',`${r.n} ÷ ${r.d} = ${w} remainder ${r.n%r.d} → <b>${mixed(r)}</b>`))}
+  else steps.push(st('Answer',`<b>${mixed(r)}</b>`));
+  return{steps,r}}
+const mixH=(w,n,d)=>w?w+fr(n,d):fr(n,d);
+const impStep=list=>st('Change mixed numbers into top-heavy fractions.',list.map(([w,n,d])=>`${mixH(w,n,d)} = ${fr(w*d+n,d)} &nbsp;<span class="aside">(${w} × ${d} + ${n} = ${w*d+n})</span>`).join('<br>'));
+function randProper(maxD=12){let a,b;do{b=ri(2,maxD);a=ri(1,b-1)}while(gcd(a,b)>1);return[a,b]}
+
+function genFracOf(){
+  const v=pick(['plain','plain','money','left','grams']);
+  let d,n;do{d=pick([3,4,5,6,7,8,9,10,12]);n=ri(1,d-1)}while(gcd(n,d)>1||(n==1&&coin(.6)));
+  if(v=='money'){d=pick([3,4,5,6,8,10]);do{n=ri(1,d-1)}while(gcd(n,d)>1);const k=ri(2,30)*5;const P=d*k;
+    return{q:`Find ${fr(n,d)} of ${money(P/100)}.`,kind:'num',ans:n*k/100,tol:.005,money:1,unit:'£',
+      wrong:[{v:k/100,msg:`That’s ${fr(1,d)}. Now multiply by the top number, ${n}.`}],
+      steps:[st('Change to pence so the numbers are whole.',`${money(P/100)} = ${P}p`),st('Divide by the bottom.',`${P} ÷ ${d} = ${k}p`),
+        st('Multiply by the top.',`${k} × ${n} = ${n*k}p`),st('Change back to pounds.',`${n*k}p = <b>${money(n*k/100)}</b>`)]}}
+  if(v=='grams'){d=pick([2,4,5,8,10]);do{n=ri(1,d-1)}while(gcd(n,d)>1);const kg=ri(1,9);const g=kg*1000;
+    return{q:`Find ${fr(n,d)} of ${kg} kg. Give your answer in grams.`,kind:'num',ans:g/d*n,unit:'g',
+      steps:[st('Change to grams first.',`${kg} kg = ${g} g`),st('Divide by the bottom.',`${g} ÷ ${d} = ${g/d} g`),st('Multiply by the top.',`${g/d} × ${n} = <b>${g/d*n} g</b>`)]}}
+  const k=ri(3,25),Q=d*k;
+  if(v=='left'){const[nm]=two();const thing=pick(['sweets','stickers','marbles','cards']);
+    return{q:`${nm} has ${Q} ${thing}. ${nm} gives away ${fr(n,d)} of them. How many does ${nm} have <b>left</b>?`,kind:'num',ans:Q-n*k,
+      wrong:[{v:n*k,msg:'That’s how many were given away. The question asks how many are <b>left</b>.'}],
+      steps:[st('Divide by the bottom.',`${Q} ÷ ${d} = ${k}`),st('Multiply by the top: that’s how many were given away.',`${k} × ${n} = ${n*k}`),
+        st('Read the question again: how many are LEFT?',`${Q} ${MI} ${n*k} = <b>${Q-n*k}</b>`)]}}
+  const u=pick(['',' m',' kg',' cm',' ml']);
+  return{q:`Find ${fr(n,d)} of ${Q}${u}.`,kind:'num',ans:n*k,unit:u.trim(),
+    wrong:[{v:k,msg:`That’s ${fr(1,d)} of it. Now multiply by the top number, ${n}.`}],
+    steps:[st('Divide by the bottom number.',`${Q} ÷ ${d} = ${k}`),st('Multiply by the top number.',`${k} × ${n} = <b>${n*k}${u}</b>`)]}
+}
+const UNITS=[{s:'minutes',b:'hour',bs:'hours',f:60,step:5},{s:'cm',b:'m',bs:'m',f:100,step:5},{s:'g',b:'kg',bs:'kg',f:1000,step:50},
+ {s:'days',b:'week',bs:'weeks',f:7,step:1},{s:'ml',b:'litre',bs:'litres',f:1000,step:50},{s:'months',b:'year',bs:'years',f:12,step:1},
+ {s:'m',b:'km',bs:'km',f:1000,step:50},{s:'mm',b:'cm',bs:'cm',f:10,step:1},{s:'seconds',b:'minute',bs:'minutes',f:60,step:5},{s:'p',b:'£',bs:'£',f:100,step:5}];
+const bigH=(u,B)=>u.b=='£'?money(B):`${B} ${B==1?u.b:u.bs}`;
+function genFracOfAnother(){
+  let u,B,T,a;do{u=pick(UNITS);B=ri(1,u.f>=100?3:4);T=B*u.f;a=ri(1,Math.floor(T/u.step)-1)*u.step}while(gcd(a,T)==1||a>=T);
+  const r=R(a,T),g=gcd(a,T);
+  return{q:`Write <b>${a} ${u.s}</b> as a fraction of <b>${bigH(u,B)}</b>, in its simplest form.`,kind:'rat',ans:r,
+    wrong:[{v:a/B,msg:'Change both amounts into the same units first.'}],
+    steps:[st('Same units first.',`${bigH(u,B)} = ${T} ${u.s}`),st('Write the first amount over the second.',fr(a,T)),
+      st('Simplify: divide the top and bottom by the biggest number that goes into both.',`÷ ${g} → <b>${frR(r)}</b>`)]}
+}
+function genMultiply(){
+  if(coin(.45)){let a,b,c,d;do{[a,b]=randProper(16);[c,d]=randProper(16)}while((gcd(a,d)==1&&gcd(c,b)==1)||a*c==1);
+    const{steps,r}=multSteps([[a,b],[c,d]]);return{q:`Work out ${fr(a,b)}${times}${fr(c,d)}`,kind:'rat',ans:r,steps}}
+  let w1,n1,d1,w2,n2,d2;do{w1=ri(1,3);[n1,d1]=randProper(9);w2=ri(1,3);[n2,d2]=randProper(9)}while(w1*w2>6);
+  const F=[[w1*d1+n1,d1],[w2*d2+n2,d2]];const{steps,r}=multSteps(F);
+  const bad=radd(R(w1*w2),rmul(R(n1,d1),R(n2,d2)));
+  return{q:`Work out ${mixH(w1,n1,d1)}${times}${mixH(w2,n2,d2)}`,kind:'rat',ans:r,preferMixed:1,
+    wrong:[{v:rval(bad),msg:'You can’t multiply the whole numbers and fractions separately. Change to top-heavy fractions first.'}],
+    steps:[impStep([[w1,n1,d1],[w2,n2,d2]]),st('Now it’s an ordinary multiplication.',prodH(F)),...steps]}
+}
+function genDivide(){
+  const v=pick(['frac','whole','mixed','mixed']);let F,qh,pre=[];
+  if(v=='frac'){let a,b,c,d;do{[a,b]=randProper(12);[c,d]=randProper(12)}while(a*d==b*c);F=[[a,b],[c,d]];qh=`${fr(a,b)}${divs}${fr(c,d)}`}
+  else if(v=='whole'){let c,d;[c,d]=randProper(15);const W=coin(.6)?c*ri(2,6):ri(2,20);F=[[W,1],[c,d]];qh=`${W}${divs}${fr(c,d)}`;
+    pre.push(st('Write the whole number as a fraction.',`${W} = ${fx(W,1)}`))}
+  else{let w1,n1,d1,w2,n2,d2;do{w1=ri(1,6);[n1,d1]=randProper(9);w2=ri(1,4);[n2,d2]=randProper(9)}while(w1*d1+n1==0);
+    F=[[w1*d1+n1,d1],[w2*d2+n2,d2]];qh=`${mixH(w1,n1,d1)}${divs}${mixH(w2,n2,d2)}`;pre.push(impStep([[w1,n1,d1],[w2,n2,d2]]))}
+  const[a,b]=F[0],[c,d]=F[1];const G=[[a,b],[d,c]];
+  const kcf=st('Keep, Change, Flip: keep the first, change ÷ to ×, flip the second.',`${fx(a,b)}${divs}${fx(c,d)} &nbsp;→&nbsp; ${fx(a,b)}${times}${fx(d,c)}`);
+  const{steps,r}=multSteps(G);
+  return{q:`Work out ${qh}`,kind:'rat',ans:r,preferMixed:1,
+    wrong:[{v:a*c/(b*d),msg:'Don’t just multiply. Remember Keep, Change, Flip: flip the <b>second</b> fraction, then multiply.'},
+           {v:(b*c)/(a*d),msg:'Flip only the <b>second</b> fraction, not the first.'}],
+    steps:[...pre,kcf,...steps]}
+}
+function genFracProblem(){
+  const v=pick(['garden','perkg','left2','compare']);
+  if(v=='garden'){const w=ri(8,24),A=R(2*w+1,2);let p,q;do{[p,q]=randProper(7)}while(q<3);const rem=R(q-p,q);const ans=rmul(rem,A);
+    return{q:`A garden has an area of ${w}${fr(1,2)} m². ${fr(p,q)} of it is planted with vegetables. What area is left?`,kind:'rat',ans,allowDec:1,preferMixed:1,unit:'m²',
+      wrong:[{v:rval(rmul(R(p,q),A)),msg:'That’s the area planted with vegetables. The question asks for the area that’s <b>left</b>.'}],
+      steps:[st('What fraction is left?',`1 ${MI} ${fr(p,q)} = ${fr(q-p,q)}`),st('“Of” means multiply. Change the mixed number first.',`${fr(q-p,q)}${times}${w}${fr(1,2)} = ${fr(q-p,q)}${times}${fr(2*w+1,2)}`),
+        ...multSteps([[q-p,q],[2*w+1,2]]).steps.map((s,i,a)=>i==a.length-1?st(s.t,s.m+' m²'):s)]}}
+  if(v=='perkg'){const W=pick([[1,1,2],[2,1,2],[1,1,4],[2,1,4],[3,1,2],[1,3,4],[4,1,2]]);const imp=R(W[0]*W[2]+W[1],W[2]);const P=ri(4,25)*20;
+    const tot=P*rval(imp);const food=pick(['vegetables','apples','cheese','rice']);
+    return{q:`${W[0]}${fr(W[1],W[2])} kg of ${food} costs ${moneyQ(tot/100)}. What is the cost per kilogram?`,kind:'num',ans:P/100,tol:.005,money:1,unit:'£',
+      wrong:[{v:tot/100*rval(imp),msg:'Cost per kg means total cost ÷ number of kg. You multiplied.'}],
+      steps:[st('Cost of 1 kg = total cost ÷ number of kg.',`${money(tot/100)} ÷ ${W[0]}${fr(W[1],W[2])}`),
+        st('Use pence and a top-heavy fraction.',`${tot} ÷ ${fr(imp.n,imp.d)}`),st('Keep, Change, Flip.',`${tot}${times}${fr(imp.d,imp.n)} = ${fx(tot*imp.d,imp.n)} = ${P}p`),
+        st('Answer',`<b>${money(P/100)}</b> per kg`)]}}
+  if(v=='left2'){const[a1,b1]=pick([[5,8],[3,4],[2,5],[3,5],[1,3],[2,3],[3,8],[1,4]]);const[c,d]=pick([[1,2],[1,3],[2,3],[1,4],[3,4]]);
+    const N=b1*d*ri(2,6);const t1=N/b1*a1,rem=N-t1,t2=rem/d*c;const[A,B]=two();const thing=pick(['dresses','books','plants','T-shirts']);
+    return{q:`A shop has ${N} ${thing}. ${A} buys ${fr(a1,b1)} of them. Then ${B} buys ${fr(c,d)} of <b>what is left</b>. How many are left now?`,kind:'num',ans:rem-t2,
+      wrong:[{v:N-t1-N/d*c,msg:`${B} buys ${fr(c,d)} of what is <b>left</b>, not ${fr(c,d)} of all ${N}.`}],
+      steps:[st(`${A} buys ${fr(a1,b1)} of ${N}.`,`${N} ÷ ${b1} × ${a1} = ${t1}`),st('How many are left?',`${N} ${MI} ${t1} = ${rem}`),
+        st(`${B} buys ${fr(c,d)} of what is left.`,`${rem} ÷ ${d} × ${c} = ${t2}`),st('How many are left now?',`${rem} ${MI} ${t2} = <b>${rem-t2}</b>`)]}}
+  let p,q,X,r2,s,Y;do{[p,q]=randProper(9);X=q*ri(2,9);[r2,s]=randProper(9);Y=s*ri(2,9)}while(p*X/q==r2*Y/s&&coin(.7));
+  const A=p*X/q,B=r2*Y/s;const ans=A>B?'The first':A<B?'The second':'They are the same';
+  return{q:`Which is bigger: ${fr(p,q)} of ${X}, or ${fr(r2,s)} of ${Y}?`,kind:'mcq',choices:['The first','The second','They are the same'],ans,
+    steps:[st('Work out the first.',`${X} ÷ ${q} × ${p} = ${A}`),st('Work out the second.',`${Y} ÷ ${s} × ${r2} = ${B}`),st('Compare.',`${A} ${A>B?'>':A<B?'<':'='} ${B}, so the answer is <b>${ans.toLowerCase()}</b>.`)]}
+}
+const T2={id:'fractions',n:2,title:'Fractions',
+ remember:[
+  'Fraction <b>of</b> an amount: <b>÷ by the bottom, × by the top</b>. E.g. '+fr(3,8)+' of 40 → 40 ÷ 8 = 5, 5 × 3 = 15.',
+  'One amount as a fraction of another: <b>same units first</b>, then first ÷ second as a fraction, and simplify.',
+  'Units: 1 m = 100 cm, 1 cm = 10 mm, 1 km = 1000 m, 1 kg = 1000 g, 1 litre = 1000 ml, 1 hour = 60 min, 1 week = 7 days, 1 year = 12 months.',
+  'Mixed numbers → <b>top-heavy fractions FIRST</b>: 2'+fr(1,3)+' = '+fr(7,3)+' (2 × 3 + 1 = 7).',
+  '<b>Multiplying</b>: cancel first (any top with any bottom), then top × top and bottom × bottom.',
+  '<b>Dividing</b>: Keep, Change, Flip (KCF), then multiply. Only flip the <b>second</b> fraction.',
+  'Always simplify fully, and turn top-heavy answers back into mixed numbers.',
+  'BIDMAS still applies: × and ÷ before + and −. To add or take away fractions, make the bottoms the same first.',
+  'In word problems, “of” means ×. Read the last line again: does it ask what’s <b>left</b>?'],
+ skills:[
+  {id:'of',title:'Fraction of an amount',goal:'Find a fraction of a quantity (revision of Year 8).',
+   method:['Divide by the <b>bottom</b> number (denominator).','Multiply by the <b>top</b> number (numerator).','If there are units (kg, £), change to the smaller unit first if it helps (4 kg = 4000 g, £1.20 = 120p).','Read the question again: do they want the part, or what’s <b>left</b>?'],
+   watch:[{her:1,t:'Your examples were spot on: '+fr(3,8)+' of 4 kg → 4000 g ÷ 8 × 3 = 1500 g = 1.5 kg ✓. Keep changing units like that.'},{t:'When a question says “how many are <b>left</b>”, take your answer away from the total at the end.'}],
+   gen:genFracOf},
+  {id:'fraction-of-another',title:'One amount as a fraction of another',goal:'Write one quantity as a fraction of another (revision of Year 8).',
+   method:['Make both amounts the <b>same units</b> (2 hours = 120 minutes).','Write the first amount on top and the second on the bottom.','Simplify fully: divide the top and bottom by the same number until you can’t any more.'],
+   watch:[{her:1,t:'You did 40 minutes out of 2 hours perfectly: '+fr(40,120)+' = '+fr(1,3)+' ✓. The key move is changing 2 hours to 120 minutes first.'}],
+   gen:genFracOfAnother},
+  {id:'multiply',title:'Multiplying fractions',goal:'Multiply fractions and mixed numbers without a calculator, showing all working.',
+   method:['Change any mixed numbers into top-heavy fractions.','Cancel: any top number with any bottom number that share a factor.','Multiply the tops together, and the bottoms together.','Simplify, and change back to a mixed number if it’s top-heavy.'],
+   watch:[{her:1,t:'In '+fr(5,12)+' × '+fr(8,15)+' you cancelled correctly to '+fr(1,3)+' × '+fr(2,3)+', then wrote 3 × <b>2</b> on the bottom. Copy the numbers carefully after cancelling: it’s 3 × 3, so the answer is '+fr(2,9)+'.'},
+     {her:1,t:'In '+fr(1,4)+' × '+fr(2,5)+' you wrote a <b>+</b> on the next line. Keep the × sign all the way through.'},
+     {her:1,t:'1'+fr(3,7)+' becomes '+fr(10,7)+' (1 × 7 + 3 = 10). Then '+fr(10,7)+' × '+fr(7,5)+' = 2, a whole number. Just write 2, not 2'+fx(2,1)+'.'},
+     {her:1,t:'Cancel all the way: '+fr(35,210)+' simplifies to '+fr(1,6)+'.'}],
+   gen:genMultiply},
+  {id:'divide',title:'Dividing fractions',goal:'Divide fractions and mixed numbers without a calculator, showing all working.',
+   method:['Change mixed numbers (and whole numbers) into fractions: 12 = '+fx(12,1)+'.','<b>K</b>eep the first fraction.','<b>C</b>hange ÷ into ×.','<b>F</b>lip the second fraction (upside down).','Multiply as normal: cancel, multiply, simplify, mixed number.'],
+   watch:[{t:'You can’t flip a mixed number. 1'+fr(3,4)+' must become '+fr(7,4)+' first, then flip it to '+fr(4,7)+'.'},{t:'Flip only the <b>second</b> fraction.'}],
+   gen:genDivide},
+  {id:'problems',title:'Fraction problems',goal:'Solve problems using fractions.',
+   method:['Read the question twice. Underline what it actually asks for.','“Of” means multiply. “Each” or “per” usually means divide.','Change mixed numbers to top-heavy fractions before you calculate.','Check: does the answer make sense? The part left over should be smaller than the whole.'],
+   watch:[{her:1,t:'Your garden working was great: you spotted that '+fr(3,5)+' was left, then did '+fr(3,5)+' × 18'+fr(1,2)+' ✓.'},{t:'“Half of <b>what is left</b>” means work out what’s left first, then take half of that.'}],
+   gen:genFracProblem}]};
+
+/* ---------- Topic 3: percentages ---------- */
+function genConvert(){
+  const v=pick(['p2f','f2p','p2d','d2p']);
+  if(v=='p2f'){let p;if(coin(.25))p=pick([2.5,7.5,12.5,17.5,22.5,37.5,62.5,87.5]);else do{p=ri(2,98)}while(gcd(p,100)==1);
+    const dec=p%1!==0;const n=dec?p*10:p,d=dec?1000:100;const r=R(n,d),g=n/r.n;
+    return{q:`Write <b>${p}%</b> as a fraction in its simplest form.`,kind:'rat',ans:r,
+      steps:[st('Per cent means “out of 100”.',`${p}% = ${fx(p,100)}`),...(dec?[st('Get rid of the decimal: × 10 on top and bottom.',fx(n,d))]:[]),
+        st('Simplify.',`÷ ${g} → <b>${frR(r)}</b>`)]}}
+  if(v=='f2p'){const d=pick([2,4,5,10,20,25,50,8,40]);let n;do{n=ri(1,d-1)}while(gcd(n,d)>1);const p=n*100/d;
+    return{q:`Write ${fr(n,d)} as a percentage.`,kind:'num',ans:p,unit:'%',
+      steps:[st('Multiply by 100.',`${fr(n,d)}${times}100 = ${fx(n*100,d)}`),st('Work it out.',`${n*100} ÷ ${d} = <b>${fmtN(p)}%</b>`)]}}
+  if(v=='p2d'){const p=pick([ri(1,9),ri(11,99),ri(1,9)+.5,ri(101,180),ri(10,40)+.5]);
+    return{q:`Write <b>${fmtN(p)}%</b> as a decimal.`,kind:'num',ans:p/100,
+      steps:[st('Divide by 100.','÷ 100 moves the digits two places: the number gets 100 times smaller.'),st('Answer',`${fmtN(p)} ÷ 100 = <b>${fmtN(p/100,5)}</b>`)]}}
+  const dcm=pick([ri(1,9)/100,ri(11,99)/100,ri(1,99)/1000,1+ri(1,99)/100,ri(1,9)/10]);
+  return{q:`Write <b>${fmtN(dcm,5)}</b> as a percentage.`,kind:'num',ans:round(dcm*100,4),unit:'%',
+    steps:[st('Multiply by 100.','× 100 moves the digits two places: the number gets 100 times bigger.'),st('Answer',`${fmtN(dcm,5)} × 100 = <b>${fmtN(dcm*100)}%</b>`)]}
+}
+function buildPct(p,Q,uf){ // non-calculator building blocks, p multiple of 5
+  const s=[],parts=[],names=[];let rest=p;
+  if(p>=50){s.push(st('Find 50%: halve it.',`50% of ${uf(Q)} = ${uf(Q/2)}`));parts.push(Q/2);names.push('50%');rest-=50}
+  if(rest==25){s.push(st('Find 25%: halve 50%.',`25% = ${uf(Q/4)}`));parts.push(Q/4);names.push('25%');rest=0}
+  const t=Math.floor(rest/10),five=rest%10==5;
+  if(t||five)s.push(st('Find 10%: divide by 10.',`10% of ${uf(Q)} = ${uf(Q/10)}`));
+  if(five)s.push(st('Find 5%: half of 10%.',`5% = ${uf(Q/20)}`));
+  for(let i=0;i<t;i++){parts.push(Q/10);names.push('10%')}if(five){parts.push(Q/20);names.push('5%')}
+  if(parts.length>1)s.push(st(`Build ${p}% from the pieces.`,`${p}% = ${names.join(' + ')} = ${parts.map(uf).join(' + ')} = <b>${uf(Q*p/100)}</b>`));
+  else s.push(st('Answer',`<b>${uf(Q*p/100)}</b>`));
+  return s}
+function genPctOf(){
+  if(coin(.55)){const p=ri(1,19)*5;const isM=coin(.35);const Q=ri(2,30)*20;const uf=isM?moneyQ:(x=>fmtN(x));
+    if(!isM&&coin(.4)){const thing=pick([['houses','have a garden'],['pupils','walk to school'],['tickets','were sold online']]);const notP=100-p;
+      return{q:`There are ${Q} ${thing[0]}. ${p}% ${thing[1]}. Without a calculator, how many do <b>not</b>?`,kind:'num',ans:Q*notP/100,tag:'No calculator',
+        wrong:[{v:Q*p/100,msg:'That’s the number that do. The question asks how many do <b>not</b>.'}],
+        steps:[st('What percentage do NOT?',`100% ${MI} ${p}% = ${notP}%`),...buildPct(notP,Q,uf)]}}
+    return{q:`Without a calculator, find <b>${p}%</b> of ${uf(Q)}.`,kind:'num',ans:Q*p/100,tol:isM?.005:1e-9,money:isM,tag:'No calculator',steps:buildPct(p,Q,uf)}}
+  const p=ri(2,99);const isM=coin(.5);const Q=isM?ri(1000,30000)/100:ri(10,900);const u=isM?'':pick([' m',' kg',' cm','']);
+  const ex=p/100*Q,ans=round(ex,2);
+  return{q:`Find <b>${p}%</b> of ${isM?money(Q):Q+u}.${isM?'':' Give your answer to 2 decimal places if needed.'}`,kind:'num',ans,tol:.005,near:.02,money:isM,unit:isM?'£':u.trim(),tag:'Calculator',
+    steps:[st('Change the percentage to a decimal: ÷ 100.',`${p}% = ${fmtN(p/100)}`),st('Multiply by the amount.',`${fmtN(p/100)}${times}${isM?money(Q):fmtN(Q)} = ${fmtN(ex,6)}`),
+      st('Round if needed.',`<b>${isM?money(ans):fmtN(ans)+u}</b>`)]}
+}
+function genIncDec(){
+  const inc=coin(),r=ri(2,60),isM=coin(.6);const A=isM?ri(500,40000)/100:ri(20,900);const u=isM?'':pick([' m',' kg',' g']);
+  const mult=(100+(inc?r:-r)),ex=A*mult/100,ans=round(ex,2);const show=x=>isM?money(x):fmtN(x)+u;
+  const ctx=isM&&!inc&&coin(.5)?`A jacket costing ${money(A)} is reduced by ${r}% in a sale. What is the new price?`:`${inc?'Increase':'Decrease'} ${show(A)} by ${r}%.`;
+  return{q:ctx,kind:'num',ans,tol:.005,near:.05,money:isM,unit:isM?'£':u.trim(),tag:'Calculator',
+    wrong:[{v:round(A*r/100,2),msg:`That’s ${r}% of the amount. Now ${inc?'add it on':'take it away'}, or use the multiplier method.`},
+           {v:round(A*(100+(inc?-r:r))/100,2),msg:`Check: is it an increase or a decrease? You went the wrong way.`}],
+    steps:[st(inc?'Increase: add the percentage to 100%.':'Decrease: take the percentage away from 100%.',`100% ${inc?'+':MI} ${r}% = ${mult}%`),
+      st('Change to a decimal multiplier (÷ 100).',`${mult}% = ${fmtN(mult/100)}`),st('Multiply.',`${show(A)}${times}${fmtN(mult/100)} = ${fmtN(ex,6)}`),
+      st('Round, and add units.',`<b>${show(ans)}</b>`),
+      st('Another way to check:',`${r}% of ${show(A)} = ${fmtN(A*r/100,4)}, then ${show(A)} ${inc?'+':MI} ${fmtN(A*r/100,4)} = ${show(ans)}`)]}
+}
+const PU=[{s:'cm',b:'m',f:100},{s:'ml',b:'litres',f:1000},{s:'g',b:'kg',f:1000},{s:'minutes',b:'hours',f:60},{s:'p',b:'£',f:100},{s:'m',b:'km',f:1000}];
+function genPctOfAnother(){
+  const v=pick(['units','class','marks']);let a,T,steps,q,wrong=[];
+  if(v=='class'){const g=ri(8,18),b=ri(8,18);T=g+b;a=g;const who=coin()?'girls':'boys';const n1=who=='girls'?g:b,n2=who=='girls'?b:g;a=n1;
+    q=`A class has ${g} girls and ${b} boys. What percentage of the <b>whole class</b> are ${who}? Give your answer to 1 decimal place.`;
+    wrong=[{v:round(n1/n2*100,1),msg:`Divide by the <b>whole class</b> (${g} + ${b} = ${T}), not by the number of ${who=='girls'?'boys':'girls'}.`}];
+    steps=[st('Find the total.',`${g} + ${b} = ${T}`),st('Write as a fraction of the total.',fr(a,T)),st('Multiply by 100.',`${a} ÷ ${T} × 100 = ${fmtN(a/T*100,4)}`),st('Round to 1 d.p.',`<b>${fmtN(round(a/T*100,1))}%</b>`)]}
+  else if(v=='marks'){T=pick([20,25,40,50,60,80]);a=ri(Math.ceil(T*.4),T-1);const[nm]=two();
+    q=`${nm} scored ${a} out of ${T} in a test. What percentage is that? Give your answer to 1 decimal place if needed.`;
+    steps=[st('Write as a fraction.',fr(a,T)),st('Multiply by 100.',`${a} ÷ ${T} × 100 = <b>${fmtN(round(a/T*100,1))}%</b>`)]}
+  else{const u=pick(PU);const B=pick([1,2,2.5,3,4,5]);T=B*u.f;a=ri(1,Math.floor(T*.9));if(u.f>=100)a=Math.max(5,snap(a,5));
+    const bh=u.b=='£'?money(B):`${B} ${u.b}`;q=`Write <b>${a} ${u.s}</b> as a percentage of <b>${bh}</b>. Give your answer to 1 decimal place if needed.`;
+    wrong=[{v:round(a/B*100,1),msg:'Change both amounts to the same units first.'}];
+    steps=[st('Same units first.',`${bh} = ${T} ${u.s}`),st('Write as a fraction.',fr(a,T)),st('Multiply by 100.',`${a} ÷ ${T} × 100 = ${fmtN(a/T*100,4)}`),st('Round to 1 d.p.',`<b>${fmtN(round(a/T*100,1))}%</b>`)]}
+  return{q,kind:'num',ans:round(a/T*100,1),tol:.05,near:.3,unit:'%',wrong,steps,tag:'Calculator'}
+}
+function genInterest(){
+  const P=ri(2,100)*50,r=pick([ri(1,12),ri(1,12),ri(1,9)+.5]);const months=coin(.3);const t=months?pick([3,4,6,8,9,18]):ri(2,6);
+  const yrs=months?t/12:t;const I1=P*r/100,I=round(I1*yrs,2);const total=coin(.4);const ans=total?round(P+I,2):I;
+  const tH=months?`${t} months`:`${t} years`;
+  const steps=[st('Interest for 1 year (per annum = per year).',`${r}% of ${money(P)} = ${fmtN(r/100)} × ${P} = ${money(I1)}`),
+    months?st(`${t} months is ${fr(t/gcd(t,12),12/gcd(t,12))} of a year.`,`${money(I1)} × ${fr(t/gcd(t,12),12/gcd(t,12))} = ${money(I)}`):st(`Multiply by the number of years.`,`${money(I1)} × ${t} = ${money(I)}`)];
+  if(total)steps.push(st('The question asks for the total amount: add the interest to the money invested.',`${money(P)} + ${money(I)} = <b>${money(ans)}</b>`));
+  else steps.push(st('Answer',`<b>${money(I)}</b> interest`));
+  const wrong=[{v:round(I1,2),msg:`That’s the interest for one year. Now multiply by the time (${tH}).`}];
+  if(total)wrong.push({v:I,msg:'That’s just the interest. The question asks for the total amount, so add on the money invested.'});
+  else wrong.push({v:round(P+I,2),msg:'The question asks only for the interest, not the total amount.'});
+  if(months)wrong.push({v:round(I1*t,2),msg:`The rate is per <b>year</b>. ${t} months is ${t}/12 of a year, not ${t} years.`});
+  return{q:`${moneyQ(P)} is invested for ${tH} at ${r}% simple interest per annum. Find ${total?'the <b>total amount</b> at the end':'the <b>simple interest</b> earned'}.`,
+    kind:'num',ans,tol:.005,money:1,unit:'£',wrong,steps,tag:'Calculator'}
+}
+const T3={id:'percentages',n:3,title:'Percentages',
+ remember:[
+  'Per cent means <b>out of 100</b>.',
+  '% → fraction: put it over 100 and simplify. % → decimal: <b>÷ 100</b>. Decimal or fraction → %: <b>× 100</b>.',
+  'Learn these: 10% = '+fr(1,10)+' = 0.1, 20% = '+fr(1,5)+' = 0.2, 25% = '+fr(1,4)+' = 0.25, 50% = '+fr(1,2)+' = 0.5, 75% = '+fr(3,4)+' = 0.75, 33'+fr(1,3)+'% = '+fr(1,3)+'.',
+  '<b>No calculator</b>: build from 10% (÷ 10), 5% (half of 10%) and 1% (÷ 100). 35% = 10% + 10% + 10% + 5%.',
+  '<b>Calculator</b>: % ÷ 100 × amount.',
+  'Increase by 7%: × 1.07 (107%). Decrease by 46%: × 0.54 (100 − 46 = 54%).',
+  'One amount as a % of another: same units, make a fraction, × 100.',
+  'Simple interest = rate% of the money × number of years. Months → years: 3 months = '+fr(3,12)+' = '+fr(1,4)+' of a year.',
+  '“Total amount” = the money you started with + the interest. Money always has 2 decimal places (£53.50).'],
+ skills:[
+  {id:'convert',title:'Fractions, decimals, percentages',goal:'Convert between common percentages, fractions and decimals.',
+   method:['% → fraction: write it over 100, then simplify. If there’s a decimal (7.5%), × 10 on top and bottom first.','Fraction → %: × 100.','% → decimal: ÷ 100 (move the digits 2 places).','Decimal → %: × 100.'],
+   watch:[{her:1,t:'Your 7.5% was great: '+fx('7.5',100)+' → '+fx(75,1000)+' → '+fr(3,40)+' ✓. That’s the trick for decimal percentages.'},{t:'0.087 = 8.7%, not 87%. Multiply by 100, which moves the digits exactly two places.'}],
+   gen:genConvert},
+  {id:'of',title:'Percentage of an amount',goal:'Find a percentage of a quantity, with and without a calculator.',
+   method:['<b>No calculator</b>: find 10% (÷ 10). Then 5% is half of that, and 1% is ÷ 100.','Add the pieces you need: 35% = 10% + 10% + 10% + 5%.','<b>Calculator</b>: % ÷ 100 × the amount.','Read the question: is it the part that do, or the part that do <b>not</b>?'],
+   watch:[{her:1,t:'You did the houses question really well: 35% = 8 + 8 + 8 + 4 = 28 houses ✓. You also spotted that “not” meant 100% − 65%.'}],
+   gen:genPctOf},
+  {id:'increase',title:'Increase and decrease',goal:'Find the result of a percentage increase or decrease.',
+   method:['Increase: 100% + the %. Decrease: 100% − the %.','Change that to a decimal (÷ 100). This is the multiplier.','Multiply the amount by the multiplier.','Money: round to 2 decimal places and write the £.'],
+   watch:[{t:'Underline whether it says <b>increase</b> or <b>decrease</b> (“reduced” and “sale” mean decrease).'},{t:'If you work out the percentage on its own, don’t forget the last step: add it on or take it away.'}],
+   gen:genIncDec},
+  {id:'percent-of',title:'One amount as a percentage of another',goal:'Express one quantity as a percentage of the other, and solve real-life problems.',
+   method:['Make both amounts the <b>same units</b>.','Write it as a fraction: part ÷ whole.','Multiply by 100.','Round as the question asks (often 1 decimal place).'],
+   watch:[{her:1,t:'In the girls and boys question you used the <b>whole class</b> (13 + 19 = 32) ✓. Always divide by the total.'},{t:'20 cm out of 5.2 m: change 5.2 m to 520 cm first.'}],
+   gen:genPctOfAnother},
+  {id:'interest',title:'Simple interest',goal:'Calculate simple interest.',
+   method:['Find the interest for <b>one year</b>: rate% of the money.','Multiply by the number of years. For months, multiply by the fraction of a year (6 months = '+fr(1,2)+').','If they ask for the <b>amount</b> or <b>total</b>, add the interest to the money you started with.'],
+   watch:[{her:1,t:'Pat borrowing £800 for 3 months: you turned 3 months into '+fr(1,4)+' of a year ✓. That’s the bit people usually miss.'},{t:'“Per annum” (p.a.) means per year.'}],
+   gen:genInterest}]};
+
+/* ================= CONTENT: topics 4–6 ================= */
+const LET=['x','y','w','a','m','p','c','t','n'];
+const factorH=(c,e,v)=>{const t=mono(c,e,v);return c<0?'('+t+')':t};
+
+/* ---------- Topic 4: expressions ---------- */
+function genExpand1(){
+  const v=pick(LET);const e=pick([0,0,0,1,1,2]);
+  let k=ri(1,9);if(coin(.3))k=-k;if(e==0&&Math.abs(k)==1)k*=ri(2,9);
+  const a=ri(1,9);const inside=coin(.25)?[[ri(1,12),0],[a*(coin()?-1:1),1]]:[[a,1],[ri(1,12)*(coin()?-1:1),0]];
+  const prod=inside.map(([c,f])=>[k*c,e+f]);const out=mono(k,e,v);
+  const wrong=[{expr:termsA([prod[0],inside[1]],v),msg:'Multiply the outside by <b>both</b> terms inside the bracket.'},
+    {expr:termsA([prod[0],[-prod[1][0],prod[1][1]]],v),msg:'Check the sign of your second term: − × + = − and − × − = +.'},
+    {expr:termsA([[-prod[0][0],prod[0][1]],prod[1]],v),msg:'Check the sign of your first term: − × + = − and − × − = +.'}];
+  if(e>=1){wrong.push({expr:termsA(prod.map(([c,p],i)=>[c,inside[i][1]==1?e:p]),v),msg:`When you multiply letters, add the powers: ${V(v)} × ${V(v)} = ${V(v)}<sup>2</sup>, ${V(v)}<sup>2</sup> × ${V(v)} = ${V(v)}<sup>3</sup>.`});
+    wrong.push({expr:termsA(prod.map(([c,p],i)=>[c,inside[i][1]==0?0:p]),v),msg:`The number term gets multiplied by the letter outside too, e.g. 4${V('a')}<sup>2</sup> × (−3) = −12${V('a')}<sup>2</sup>.`})}
+  return{q:`Expand ${out}(${termsH(inside,v)})`,kind:'expr',mode:'expand',v,ans:termsA(prod,v),terms:collect(prod).length,wrong,
+    steps:[...inside.map(([c,f],i)=>st(`Multiply ${out} by the ${i?'second':'first'} term.`,`${factorH(k,e,v)} × ${factorH(c,f,v)} = ${mono(k*c,e+f,v)}`)),
+      st('Put the two answers together.',`<b>${termsH(prod,v)}</b>`)]}
+}
+function partsH(parts,v){let s='';parts.forEach((p,i)=>{
+  if(p.k!=null){const a=Math.abs(p.k);s+=(i==0?(p.k<0?MI:''):(p.k<0?' '+MI+' ':' + '))+(a==1?'':a)+'('+termsH(p.in,v)+')'}
+  else s+=termH(p.t[0],p.t[1],v,i==0)});return s}
+const brTitle=(p,v)=>{const a=Math.abs(p.k);return(p.k<0?MI:'')+(a==1?'':a)+'('+termsH(p.in,v)+')'};
+function expandParts(parts,v){const steps=[];const all=[];let wrongAll=null;
+  for(const p of parts){if(p.k==null){all.push(p.t);continue}
+    const pr=p.in.map(([c,f])=>[p.k*c,f]);all.push(...pr);
+    steps.push(st(p.k<0?`Expand ${brTitle(p,v)}. The minus belongs to the ${Math.abs(p.k)}, so it changes every sign inside.`:`Expand ${brTitle(p,v)}.`,
+      p.in.map(([c,f])=>`${factorH(p.k,0,v)} × ${factorH(c,f,v)} = ${mono(p.k*c,f,v)}`).join('<br>')))}
+  return{steps,all}}
+function collectSteps(all,v,label){const col=collect(all);const s=[st('Write it all out.',termsH(all,v))];
+  const xs=all.filter(t=>t[1]==1),ns=all.filter(t=>t[1]==0);
+  if(xs.length>1)s.push(st(`Collect the ${V(v)} terms.`,`${termsH(xs,v)} = ${termsH(collect(xs),v)}`));
+  if(ns.length>1)s.push(st('Collect the numbers.',`${termsH(ns,v)} = ${termsH(collect(ns),v)}`));
+  s.push(st('Answer',`<b>${label||''}${termsH(col,v)}</b>`));return{s,col}}
+function genExpand2(){
+  const v=pick(['x','x','y','w','a','n']);const variant=pick(['two','two','loose','loose','shape']);
+  if(variant=='shape'){const k=ri(2,15);
+    if(coin()){const parts=[{k:2,in:[[1,1],[k,0]]},{t:[2,1]}];const{steps,all}=expandParts(parts,'x');const{s,col}=collectSteps(all,'x','P = ');
+      return{q:`The width of a rectangle is <i>x</i> cm. The length is ${k} cm more than the width. Write a formula for the perimeter, <i>P</i>, in its simplest form.`,
+        kind:'expr',mode:'simplify',v:'x',ans:termsA(col,'x'),terms:col.length,
+        steps:[st('Label the sides.',`width = ${V('x')}, length = ${V('x')} + ${k}`),st('Perimeter = 2 lengths + 2 widths.',`P = 2(${V('x')} + ${k}) + 2${V('x')}`),...steps,...s]}}
+    const parts=[{t:[1,1]},{k:2,in:[[1,1],[-k,0]]}];const{steps,all}=expandParts(parts,'x');const{s,col}=collectSteps(all,'x','P = ');
+    return{q:`The base of an isosceles triangle is <i>x</i> cm. The two equal sides are each ${k} cm shorter than the base. Write a formula for the perimeter, <i>P</i>, in its simplest form.`,
+      kind:'expr',mode:'simplify',v:'x',ans:termsA(col,'x'),terms:col.length,
+      steps:[st('Label the sides.',`base = ${V('x')}, each equal side = ${V('x')} ${MI} ${k}`),st('Add all three sides.',`P = ${V('x')} + 2(${V('x')} ${MI} ${k})`),...steps,...s]}}
+  const br=()=>({k:ri(1,8)*(coin(.35)?-1:1)||2,in:[[ri(1,6),1],[ri(1,9)*(coin()?-1:1),0]]});
+  let parts;
+  if(variant=='two'){const a=br();a.k=Math.abs(a.k)<2?ri(2,8):a.k;const b=br();if(coin(.25))b.k=-1;parts=[a,b];if(coin(.3))parts.push({t:[ri(1,9)*(coin()?-1:1),0]})}
+  else{const b=br();if(b.k==-1||b.k==1)b.k=ri(2,7);const loose={t:coin()?[ri(1,9)*(coin(.3)?-1:1),1]:[ri(1,12),0]};
+    if(coin(.25)){parts=[{t:[ri(5,15),0]},{k:-1,in:[[ri(1,6),1],[ri(1,9)*(coin()?-1:1),0]]}]}else parts=coin()?[loose,b]:[b,{t:[loose.t[0]*(coin(.5)?-1:1),loose.t[1]]}];
+    if(parts[0].t&&parts[0].t[0]<0)parts[0].t[0]*=-1}
+  const{steps,all}=expandParts(parts,v);const{s,col}=collectSteps(all,v);
+  if(!col.some(t=>t[1]==1))return genExpand2();
+  const wrong=[];const neg=parts.find(p=>p.k!=null&&p.k<0);
+  if(neg){const bad=[];for(const p of parts){if(p.k==null)bad.push(p.t);else bad.push(...p.in.map(([c,f],i)=>[(p===neg&&i==1?-1:1)*p.k*c,f]))}
+    wrong.push({expr:termsA(collect(bad),v),msg:`A minus in front of a bracket changes the sign of <b>every</b> term inside: ${MI}(${V(v)} ${MI} 3) = ${MI}${V(v)} + 3.`})}
+  return{q:`Expand and simplify ${partsH(parts,v)}`,kind:'expr',mode:'simplify',v,ans:termsA(col,v),terms:col.length,wrong,steps:[...steps,...s]}
+}
+function genFactorise(){
+  const v=pick(['x','x','y','w','a','p']);const f=pick(['num','num','var','both','both']);let g,eh,inner;
+  if(f=='num'){g=ri(2,9);eh=0;let a,b;do{a=ri(1,6);b=ri(1,12)}while(gcd(a,b)>1);const s=coin()?-1:1;inner=coin(.25)?[[b,0],[-a,1]]:[[a,1],[s*b,0]]}
+  else if(f=='var'){g=1;eh=1;const k=ri(1,9)*(coin()?-1:1);inner=[[1,1],[k,0]]}
+  else{g=ri(2,6);eh=1;let a,b;do{a=ri(1,5);b=ri(1,9)}while(gcd(a,b)>1);inner=coin(.35)?[[b,0],[-a,1]]:[[a,1],[b*(coin()?-1:1),0]]}
+  const full=inner.map(([c,e])=>[c*g,e+eh]);const hcf=mono(g,eh,v);
+  const nums=full.map(t=>Math.abs(t[0]));
+  const steps=[st('Find the highest common factor (HCF) of the numbers.',g==1?`${nums[0]} and ${nums[1]} have no common factor except 1.`:`HCF of ${nums[0]} and ${nums[1]} is ${g}.`),
+    st(`Is there ${v=='x'?'an':'a'} ${V(v)} in every term?`,eh?`Yes, so the HCF is <b>${hcf}</b>.`:`No, so the HCF is just <b>${g}</b>.`),
+    st('Write the HCF outside a bracket. Divide each term by it.',full.map((t,i)=>`${mono(t[0],t[1],v)} ÷ ${hcf} = ${mono(inner[i][0],inner[i][1],v)}`).join('<br>')),
+    st('Answer',`<b>${hcf}(${termsH(inner,v)})</b>`),
+    st('Check by expanding it back.',`${hcf}(${termsH(inner,v)}) = ${termsH(full,v)} ✓`)];
+  return{q:`Factorise ${termsH(full,v)}`,kind:'expr',mode:'factorise',v,ans:termsA(full,v),hcf:termsA([[g,eh]],v),fact:termsA([[g,eh]],v)+'('+termsA(inner,v)+')',steps}
+}
+const T4={id:'expressions',n:4,title:'Expressions',
+ remember:[
+  'Expand: multiply <b>everything</b> inside the bracket by the term outside.',
+  'Signs: + × + = +, − × − = +, + × − = −, − × + = −.',
+  'A minus in front of a bracket changes <b>every</b> sign inside: −(x − 3) = −x + 3.',
+  'Number before letter: 3 × x = 3x (write 4w, not w4).',
+  'Letters times letters: x × x = x², x² × x = x³ (add the powers). 2w × 3w = 6w².',
+  'Then collect like terms: x terms together, numbers together. x² and x are <b>not</b> like terms.',
+  'Factorise = expanding backwards. Find the HCF of the numbers <b>and</b> letters, put it outside, divide each term by it.',
+  'Always check a factorised answer by expanding it back.'],
+ skills:[
+  {id:'expand',title:'Expanding brackets',goal:'Expand brackets, e.g. 5(2x − 3), x(3x + 2), −2x²(4x − 6).',
+   method:['Multiply the term outside by the <b>first</b> term inside.','Multiply the term outside by the <b>second</b> term inside, and watch the sign.','Letters times letters: add the powers (x × x = x²).','Write the number before the letter.'],
+   watch:[{her:1,t:'w(4 + 2w): you wrote <b>w4</b>. Write the number first: <b>4w + 2w²</b>. Same for c(9 − c) = <b>9c − c²</b>.'},
+     {her:1,t:'2w(3w − 1): 2w × (−1) = <b>−2w</b>, not −3w. Multiply, don’t add.'},
+     {her:1,t:'9y(2y + 3): 9y × 3 = <b>27y</b>, not 18y.'},
+     {her:1,t:'4a²(2a − 3): the second term is 4a² × (−3) = <b>−12a²</b>. The a² stays. Same with 2w²(w + 6) = 2w³ + <b>12w²</b>.'}],
+   gen:genExpand1},
+  {id:'simplify',title:'Expand and simplify',goal:'Expand brackets and simplify, e.g. 3(x − 4) + 2(2x + 5).',
+   method:['Expand each bracket on its own. The sign in front of a number belongs to it.','Write everything out in one line.','Collect the letter terms.','Collect the numbers.'],
+   watch:[{t:'−(x − 3): there’s an invisible 1 in front, so it’s −1 × x = −x and −1 × −3 = +3.'},{t:'8(2x + 8) − 1(4x − 6) = 16x + 64 − 4x + 6. The last sign turns into <b>+</b>.'}],
+   gen:genExpand2},
+  {id:'factorise',title:'Factorising',goal:'Factorise using one bracket, e.g. 5x − 15, x² + 3x, 6x − 2x².',
+   method:['Find the HCF of the numbers.','Check if every term has the letter. If so, the letter is part of the HCF too.','Write the HCF outside a bracket.','Divide each term by the HCF to fill the bracket.','Check by expanding back.'],
+   watch:[{t:'6x − 2x² = 2x(3 − x). If you only take out 2, it isn’t <b>fully</b> factorised.'},{t:'x² + 3x = x(x + 3). The HCF can be just a letter.'}],
+   gen:genFactorise}]};
+
+/* ---------- Topic 5: travel graphs ---------- */
+const FM={15:[1,4],20:[1,3],30:[1,2],40:[2,3],45:[3,4],10:[1,6],50:[5,6]};
+const hrH=min=>{const h=Math.floor(min/60),m=min%60;return(h?h+(h==1?' hour':' hours'):'')+(h&&m?' ':'')+(m?m+' minutes':'')};
+function hoursStep(min,showSplit){const h=Math.floor(min/60),m=min%60;const r=R(min,60);
+  if(!m)return st('Change the time into hours (÷ 60).',`${min} minutes = ${h} hour${h>1?'s':''}`);
+  const f=R(m,60);const dec=(r.d<=5||r.d==10||r.d==20)?' = '+fmtN(min/60)+' hours':'';
+  return st('Change the time into hours.',`${showSplit&&h?`${min} minutes = ${hrH(min)}<br>`:''}${m} minutes = ${fx(m,60)} = ${frR(f)} hour, so the time is ${mixed(r)} hours${dec}.`)}
+function genSDT(){
+  const v=pick(['D','S','T']);
+  if(coin(.3)){ // metres and seconds
+    const who=pick(['An athlete','A cyclist','A dog','A runner']);
+    if(v=='D'){const S=pick([ri(2,12),ri(2,9)+.5]),T=ri(3,40);
+      return{q:`${who} travels at ${fmtN(S)} m/s. How far does it go in ${T} seconds?`,kind:'num',ans:S*T,unit:'m',
+        steps:[st('Distance = speed × time.',`D = S × T`),st('Multiply.',`${fmtN(S)} × ${T} = <b>${fmtN(S*T)} m</b>`)]}}
+    if(v=='S'){const S=ri(2,30),T=ri(4,60);
+      return{q:`${who} travels ${S*T} m in ${T} seconds. What is its speed in m/s?`,kind:'num',ans:S,unit:'m/s',
+        steps:[st('Speed = distance ÷ time.',`S = D ÷ T`),st('Divide.',`${S*T} ÷ ${T} = <b>${S} m/s</b>`)]}}
+    const S=pick([1.5,2,2.5,4,5,8]),D=ri(5,60)*5,T=D/S;
+    return{q:`${who} travels at ${fmtN(S)} m/s. How long does it take to go ${D} m? Give your answer in seconds${T%1?', to 1 decimal place':''}.`,kind:'num',ans:round(T,1),tol:.05,near:.3,unit:'s',
+      steps:[st('Time = distance ÷ speed.',`T = D ÷ S`),st('Divide.',`${D} ÷ ${fmtN(S)} = ${fmtN(T,3)}`),st('Answer',`<b>${fmtN(round(T,1))} seconds</b>`)]}}
+  const mph=coin();const su=mph?'mph':'km/h',du=mph?'miles':'km';
+  if(v=='D'){const fast=coin(.25);const S=fast?12*ri(30,48):12*ri(2,8);const h=ri(fast?1:0,3);const m=pick(h?[15,20,30,40,45,0]:[15,20,30,40,45]);const T=h*60+m;const D=S*T/60;
+    const who=fast?'A plane':pick(['A car','A coach','A train','A van']);const steps=[st('Distance = speed × time.','D = S × T'),hoursStep(T)];
+    if(m&&h){const[a,b]=FM[m];steps.push(st('Multiply in two parts.',`${S} × ${h} = ${S*h}<br>${S} × ${fr(a,b)} = ${S} ÷ ${b} × ${a} = ${S*a/b}<br>${S*h} + ${S*a/b} = ${D}`))}
+    else if(m){const[a,b]=FM[m];steps.push(st('Multiply.',`${S} × ${fr(a,b)} = ${S} ÷ ${b} × ${a} = ${D}`))}
+    else steps.push(st('Multiply.',`${S} × ${h} = ${D}`));
+    steps.push(st('Answer',`<b>${D} ${du}</b>`));
+    return{q:`${who} travels at ${S} ${su}. How far does it go in ${hrH(T)}?`,kind:'num',ans:D,unit:du,
+      wrong:[{v:S*T,msg:'You multiplied by the minutes. Change the time into hours first.'},{v:S*(h+m/100),msg:`${m} minutes is not 0.${m} hours. It’s ${m} ÷ 60 of an hour.`}],steps}}
+  if(v=='S'){let S,T;do{S=ri(3,80);T=pick([15,20,30,40,45,75,90,100,120,135,150])}while((S*T)%60);const D=S*T/60;
+    const who=pick(['A bus','A car','A train','A coach']);const r=R(T,60);
+    return{q:`${who} travels ${D} ${du} in ${hrH(T)}. What is its average speed in ${su}?`,kind:'num',ans:S,unit:su,
+      wrong:[{v:round(D/T,2),msg:`You divided by the minutes. For ${su}, change ${hrH(T)} into hours first.`},{v:D*rval(r),msg:'Speed = distance ÷ time. You multiplied.'}],
+      steps:[st('Speed = distance ÷ time.','S = D ÷ T'),hoursStep(T),r.d==1?st('Divide.',`${D} ÷ ${r.n} = ${S}`):st('Divide (dividing by a fraction: Keep, Change, Flip).',`${D} ÷ ${frR(r)} = ${D} × ${fr(r.d,r.n)} = ${S}`),st('Answer',`<b>${S} ${su}</b>`)]}}
+  let S,M;do{S=pick([4,5,6,8,10,12,15,20,24,30,40,48,50,60,64,80]);M=ri(2,40)*5}while((S*M)%60||M<15);const D=S*M/60;
+  const who=pick(['Zena walks','A car drives','A cyclist rides','A coach drives']);
+  return{q:`${who} at ${S} ${su}. How long does it take to travel ${D} ${du}? Give your answer in minutes.`,kind:'num',ans:M,unit:'min',
+    wrong:[{v:round(M/60,4),msg:'That’s the time in hours. Multiply by 60 to get minutes.'},{v:S*D,msg:'Time = distance ÷ speed. You multiplied.'}],
+    steps:[st('Time = distance ÷ speed.','T = D ÷ S'),st('Divide.',`${D} ÷ ${S} = ${fmtN(D/S)} hours`),st('Change hours into minutes (× 60).',`${fmtN(D/S)} × 60 = <b>${M} minutes</b>${M>=60?' ('+hrH(M)+')':''}`)]}
+}
+const clk=m=>`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+function genAverage(){
+  if(coin(.45)){let S,dur;do{S=ri(12,60);dur=pick([15,20,30,40,45,50,75,80,90,100,105,120])}while((S*dur)%60);const D=S*dur/60;
+    const dep=ri(7*12,17*12)*5,arr=dep+dur;const[nm]=two();const r=R(dur,60);const mph=coin();const su=mph?'mph':'km/h',du=mph?'miles':'km';
+    return{q:`${nm} leaves home at ${clk(dep)} and arrives at ${clk(arr)}. The journey is ${D} ${du}. What is the average speed in ${su}?`,kind:'num',ans:S,unit:su,
+      wrong:[{v:round(D/dur,2),msg:'You divided by the minutes. Change the time into hours first.'}],
+      steps:[st('How long is the journey?',`${clk(dep)} to ${clk(arr)} = ${hrH(dur)}`),hoursStep(dur),st('Speed = distance ÷ time.',r.d==1?`${D} ÷ ${r.n} = <b>${S} ${su}</b>`:`${D} ÷ ${frR(r)} = ${D} × ${fr(r.d,r.n)} = <b>${S} ${su}</b>`)]}}
+  let A,Tt;do{Tt=pick([120,150,160,180,200,240]);A=ri(6,24)}while((A*Tt)%60);const Dt=A*Tt/60;
+  const stop=pick([10,20,30,40]);const t1=ri(4,(Tt-stop)/5-4)*5,t2=Tt-stop-t1;const D1=ri(Math.ceil(Dt*.3),Math.floor(Dt*.7)),D2=Dt-D1;const[nm]=two();const r=R(Tt,60);
+  return{q:`${nm} cycles ${D1} km in ${hrH(t1)}, stops for ${stop} minutes for lunch, then cycles ${D2} km in ${hrH(t2)}. What is the average speed for the whole journey, in km/h?`,
+    kind:'num',ans:A,tol:.05,near:.5,unit:'km/h',
+    wrong:[{v:round(Dt/((Tt-stop)/60),1),msg:'Average speed uses the <b>total</b> time, including the stop.'}],
+    steps:[st('Total distance.',`${D1} + ${D2} = ${Dt} km`),st('Total time, including the stop.',`${t1} + ${stop} + ${t2} = ${Tt} minutes`),hoursStep(Tt,1),
+      st('Average speed = total distance ÷ total time.',r.d==1?`${Dt} ÷ ${r.n} = <b>${A} km/h</b>`:`${Dt} ÷ ${frR(r)} = ${Dt} × ${fr(r.d,r.n)} = <b>${A} km/h</b>`)]}
+}
+function makeJourney(){
+  for(let k=0;k<500;k++){const T0=pick([9,10,13,14])*60;const t1=pick([20,30,40,60]),s1=pick([10,20,30]),t2=pick([20,30,40,60]),s2=pick([10,20,30]),t3=pick([20,30,40,60]);
+    const d1=ri(2,8)*2,d2=ri(1,6)*2,D=d1+d2;if(D>24)continue;
+    const v1=d1*60/t1,v2=d2*60/t2,v3=D*60/t3;if(v1%1||v2%1||v3%1)continue;
+    const P=[[T0,0],[T0+t1,d1],[T0+t1+s1,d1],[T0+t1+s1+t2,D],[T0+t1+s1+t2+s2,D],[T0+t1+s1+t2+s2+t3,0]];
+    return{T0,t:[t1,s1,t2,s2,t3],d:[d1,0,d2,0,D],v:[v1,0,v2,0,v3],D,P,end:P[5][0]}}}
+function genTravel(){
+  const J=makeJourney();const place=pick(['the beach','Grandma’s house','the lake','the next town']);const who=pick(['A cyclist','A bus','A car']);
+  const ymax=Math.ceil((J.D+1)/4)*4;const fig=h=>({type:'travel',x:{min:J.T0,max:Math.ceil(J.end/30)*30,major:30,minor:10,label:'Time'},
+    y:{min:0,max:ymax,major:4,minor:2,label:'Distance from home (km)'},path:J.P,hi:h});
+  const intro=`The graph shows ${who.toLowerCase()}’s journey from home to ${place} and back. `;
+  const kind=pick(['speed','speed','back','stopped','total','average','describe','far']);
+  const seg=i=>`${clk(J.P[i][0])} to ${clk(J.P[i+1][0])}`,btw=i=>`between ${clk(J.P[i][0])} and ${clk(J.P[i+1][0])}`;
+  const spSteps=i=>{const t=J.t[i],d=J.d[i],r=R(t,60);return[st('Find that part of the line.',`From ${seg(i)}.`,fig([i])),
+    st('Read the distance and the time for that part.',`Distance: ${d} km. Time: ${t} minutes = ${frR(r)} hour${r.n>r.d?'s':''}.`),
+    st('Speed = distance ÷ time.',r.d==1?`${d} ÷ ${r.n} = <b>${J.v[i]} km/h</b>`:`${d} ÷ ${frR(r)} = ${d} × ${fr(r.d,r.n)} = <b>${J.v[i]} km/h</b>`)]};
+  if(kind=='speed'){const i=pick([0,2]);return{q:intro+`What is the speed ${btw(i)}?`,fig:fig(),kind:'num',ans:J.v[i],unit:'km/h',
+    wrong:[{v:round(J.d[i]/J.t[i],3),msg:'You divided by the minutes. Change the time into hours first.'},{v:J.d[i],msg:'That’s the distance. Speed = distance ÷ time.'}],steps:spSteps(i)}}
+  if(kind=='back')return{q:intro+'What is the speed on the way back home?',fig:fig(),kind:'num',ans:J.v[4],unit:'km/h',
+    wrong:[{v:round(J.D/J.t[4],3),msg:'You divided by the minutes. Change the time into hours first.'}],steps:spSteps(4)};
+  if(kind=='stopped')return{q:intro+'For how many minutes is it stopped altogether?',fig:fig(),kind:'num',ans:J.t[1]+J.t[3],unit:'min',
+    wrong:[{v:J.t[1],msg:'There’s more than one flat part. Add them all up.'},{v:J.t[3],msg:'There’s more than one flat part. Add them all up.'}],
+    steps:[st('Flat (horizontal) lines mean not moving.','There are two flat parts:',fig([1,3])),st('Read how long each one lasts.',`${seg(1)}: ${J.t[1]} min<br>${seg(3)}: ${J.t[3]} min`),st('Add them.',`${J.t[1]} + ${J.t[3]} = <b>${J.t[1]+J.t[3]} minutes</b>`)]};
+  if(kind=='far')return{q:intro+`How far is it from home to ${place}?`,fig:fig(),kind:'num',ans:J.D,unit:'km',
+    steps:[st('The highest point of the graph is the furthest from home.','Read across from the top of the line to the distance axis.',fig([3])),st('Answer',`<b>${J.D} km</b>`)]};
+  if(kind=='total')return{q:intro+'What is the total distance travelled?',fig:fig(),kind:'num',ans:2*J.D,unit:'km',
+    wrong:[{v:J.D,msg:'That’s only one way. The total distance includes the journey back.'}],
+    steps:[st('How far is the furthest point?',`${J.D} km from home.`),st('It goes there and comes back.',`${J.D} + ${J.D} = <b>${2*J.D} km</b>`)]};
+  if(kind=='average'){const tot=J.end-J.T0,ans=2*J.D*60/tot;const moving=tot-J.t[1]-J.t[3];const r=R(tot,60);
+    return{q:intro+'What is the average speed for the whole journey, including stops? Give your answer to 1 decimal place if needed.',fig:fig(),kind:'num',ans:round(ans,1),tol:.05,near:.3,unit:'km/h',
+      wrong:[{v:round(2*J.D*60/moving,1),msg:'Average speed uses the <b>total</b> time, including the stops.'},{v:round(J.D*60/tot,1),msg:'Use the total distance there <b>and back</b>.'}],
+      steps:[st('Total distance (there and back).',`${J.D} + ${J.D} = ${2*J.D} km`),st('Total time, from start to finish.',`${clk(J.T0)} to ${clk(J.end)} = ${hrH(tot)} = ${mixed(r)} hours`),
+        st('Average speed = total distance ÷ total time.',`${2*J.D} ÷ ${mixed(r)} = ${2*J.D} × ${fr(r.d,r.n)} = ${fmtN(ans,3)} → <b>${fmtN(round(ans,1))} km/h</b>`)]}}
+  const i=ri(0,4);const lab=['Travelling away from home at a steady speed','Stopped (not moving)','Travelling back towards home','Speeding up'];
+  const ans=i==4?lab[2]:i%2?lab[1]:lab[0];
+  return{q:intro+`What is happening ${btw(i)}?`,fig:fig(),kind:'mcq',choices:lab,ans,
+    why:{[lab[3]]:'A straight line means a steady speed. Speeding up would make a curve.'},
+    steps:[st('Find that part of the line.',`From ${seg(i)}.`,fig([i])),st('What does the line do?',i==4?'It goes <b>down</b>: the distance from home is getting smaller.':i%2?'It’s <b>flat</b>: the distance isn’t changing.':'It goes <b>up</b> in a straight line: moving away at a steady speed.'),st('So…',`<b>${ans}</b>`)]}
+}
+const T5={id:'travel',n:5,title:'Travel graphs',
+ remember:[
+  'The triangle: <b>D</b> on top, <b>S</b> and <b>T</b> underneath. D = S × T, S = D ÷ T, T = D ÷ S.',
+  'Units must match: km/h needs km and <b>hours</b>. m/s needs metres and seconds.',
+  'Minutes → hours: ÷ 60. 15 min = '+fr(1,4)+' h, 20 min = '+fr(1,3)+' h, 30 min = '+fr(1,2)+' h, 40 min = '+fr(2,3)+' h, 45 min = '+fr(3,4)+' h.',
+  'An answer in hours → minutes: × 60 (0.4 h = 24 min).',
+  '<b>Average speed</b> = total distance ÷ total time, including any stops.',
+  'Distance–time graphs: steeper = faster. <b>Flat</b> = stopped. Line going <b>down</b> = coming back.',
+  'Speed of one part of a graph = distance for that part ÷ time for that part.',
+  'Read points exactly where the line crosses grid lines.'],
+ skills:[
+  {id:'sdt',title:'Speed, distance, time',goal:'Calculate speed, distance or time, and average speed.',
+   method:['Draw the triangle and cover what you want: D = S × T, S = D ÷ T, T = D ÷ S.','Check the units match. Change minutes into hours (÷ 60) if the speed is per hour.','Put the numbers in and calculate.','If the answer is a time in hours, × 60 for minutes.'],
+   watch:[{her:1,t:'Bus, 16 km in 30 minutes: you started with 16 ÷ 30. For km/h, change 30 minutes to 0.5 hours first: 16 ÷ 0.5 = <b>32 km/h</b>.'},
+     {her:1,t:'36 miles in 45 minutes: you wrote “0.75 miles” under the line. It’s 0.75 <b>hours</b>. The answer, 48 mph, was right ✓.'}],
+   gen:genSDT},
+  {id:'average',title:'Average speed',goal:'Calculate average speed for a whole journey.',
+   method:['Add up the <b>total distance</b>.','Add up the <b>total time</b>, including stops. From clock times, count on from the start time.','Change the time into hours.','Average speed = total distance ÷ total time.'],
+   watch:[{her:1,t:'On the Coleraine journey you got to 32 ÷ 2'+fr(2,3)+' and stopped. Finish it with fractions: 2'+fr(2,3)+' = '+fr(8,3)+', so 32 × '+fr(3,8)+' = <b>12 km/h</b>.'}],
+   gen:genAverage},
+  {id:'graphs',title:'Distance–time graphs',goal:'Draw and interpret a distance–time graph, and calculate speed from it.',
+   method:['Up-slope = moving away. Flat = stopped. Down-slope = coming back.','For the speed of one part, read the distance it covers and the time it takes.','Change the time to hours, then speed = distance ÷ time.','Drawing one: plot each point (time, distance) and join them with straight lines. A stop is a flat line.'],
+   watch:[{her:1,t:'You described every part of the Coleraine journey correctly, and both speeds (15 km/h and 24 km/h) were right ✓.'},{t:'“Total distance travelled” means there <b>and back</b>.'}],
+   gen:genTravel}]};
+
+/* ---------- Topic 6: equations ---------- */
+const side=(A,B,v,cf)=>termsH(cf?[[B,0],[A,1]]:[[A,1],[B,0]],v);
+function solveSteps(L,Rr,v){
+  const steps=[];let[A1,B1]=L,[A2,B2]=Rr;
+  if(A1>A2){
+    if(A2){steps.push(st(`${A2>0?'Subtract':'Add'} ${mono(Math.abs(A2),1,v)} ${A2>0?'from':'to'} both sides.`,`${side(A1-A2,B1,v)} = ${B2}`))}
+    if(B1){steps.push(st(`${B1>0?'Subtract':'Add'} ${Math.abs(B1)} ${B1>0?'from':'to'} both sides.`,`${mono(A1-A2,1,v)} = ${sg(B2-B1)}`))}
+    var num=B2-B1,den=A1-A2,onLeft=true}
+  else{
+    if(A1){steps.push(st(`${A1>0?'Subtract':'Add'} ${mono(Math.abs(A1),1,v)} ${A1>0?'from':'to'} both sides, so the ${V(v)} term stays positive.`,`${sg(B1)} = ${side(A2-A1,B2,v)}`))}
+    if(B2){steps.push(st(`${B2>0?'Subtract':'Add'} ${Math.abs(B2)} ${B2>0?'from':'to'} both sides.`,`${sg(B1-B2)} = ${mono(A2-A1,1,v)}`))}
+    var num=B1-B2,den=A2-A1,onLeft=false}
+  const r=R(num,den);
+  if(den!=1)steps.push(st(`Divide both sides by ${den}.`,`${V(v)} = ${fx(sg(num),den)}${gcd(num,den)>1||r.d==1?' = '+frR(r):''}`));
+  steps.push(st('Answer',`<b>${V(v)} = ${frR(r)}</b>${Math.abs(r.n)>r.d&&r.d>1?' (or '+mixed(r)+')':''}`));
+  return{steps,r}}
+const eqH=(Ll,Rl,v)=>`${termsH(Ll,v)} = ${termsH(Rl,v)}`;
+function intX(lo=-5,hi=12){let x;do{x=ri(lo,hi)}while(!x);return x}
+function genOneSide(){
+  const v=pick(['x','x','y','n','w','p']);
+  if(coin(.3)){const a=ri(2,9),x=ri(1,9),b=ri(a*x+1,a*x+30),c=b-a*x;const{steps,r}=solveSteps([-a,b],[0,c],v);
+    return{q:`Solve ${eqH([[b,0],[-a,1]],[[c,0]],v)}`,kind:'rat',ans:r,v,steps,wrong:[{v:(b+c)/a,msg:'Careful with the signs: do the opposite of what’s there.'}]}}
+  const a=ri(2,9);const frac=coin(.2);let x,b,c;b=ri(1,20)*(coin()?-1:1);
+  if(frac){do{c=ri(-10,40)}while((c-b)%a==0)}else{x=intX(-4,12);c=a*x+b}
+  const{steps,r}=solveSteps([a,b],[0,c],v);
+  return{q:`Solve ${eqH([[a,1],[b,0]],[[c,0]],v)}`,kind:'rat',ans:r,v,preferMixed:0,
+    wrong:[{v:(c+b)/a,msg:`To undo ${b>0?'+ '+b:MI+' '+(-b)}, ${b>0?'subtract':'add'} ${Math.abs(b)}. Do the opposite operation.`}],
+    steps:[...steps,...(r.d==1?[st('Check by putting it back in.',`${a} × ${sg(r.n)} ${b<0?MI:'+'} ${Math.abs(b)} = ${c} ✓`)]:[])]}
+}
+function genBothSides(){
+  const v=pick(['x','y','w','n']);const x=coin(.85)?intX(-3,10):null;
+  let a,b,c,d;
+  if(coin(.3)){a=ri(1,6);c=ri(1,6);const xx=x??ri(1,6);b=ri(5,30);d=b-a*xx-c*xx;const{steps,r}=solveSteps([-a,b],[c,d],v);
+    return{q:`Solve ${eqH([[b,0],[-a,1]],[[c,1],[d,0]],v)}`,kind:'rat',ans:r,v,
+      wrong:[{v:(d-b)/(c-a),msg:`To move ${MI}${mono(a,1,v)}, <b>add</b> ${mono(a,1,v)} to both sides.`}],steps}}
+  do{a=ri(2,11);c=ri(1,9)}while(a==c);b=ri(1,15)*(coin()?-1:1);
+  let xx=x;if(xx==null&&Math.abs(a-c)==1)xx=intX(-3,10);
+  if(xx!=null)d=a*xx+b-c*xx;else{do{d=ri(-15,25)}while((d-b)%(a-c)==0)}
+  const{steps,r}=solveSteps([a,b],[c,d],v);
+  return{q:`Solve ${eqH([[a,1],[b,0]],[[c,1],[d,0]],v)}`,kind:'rat',ans:r,v,
+    wrong:[{v:(d-b)/(a+c),msg:`To move +${mono(c,1,v)} across, <b>subtract</b> ${mono(c,1,v)} from both sides.`},{v:(d+b)/(a-c),msg:'Check the number step: do the opposite of the sign that’s there.'}],steps}
+}
+function genBrackets(){
+  const v=pick(['x','x','y','w']);const f=pick(['one','one','both','big','big']);let Lp,Rp;
+  if(f=='one'){const k=ri(2,9),a=ri(1,6),b=ri(1,9)*(coin()?-1:1),x=intX(-3,9);Lp=[{k,in:[[a,1],[b,0]]}];Rp=[{t:[k*(a*x+b),0]}]}
+  else if(f=='both'){const k=ri(2,7),a=ri(1,5),b=ri(1,9)*(coin()?-1:1);let m;do{m=ri(1,9)}while(m==k*a);const x=intX(-3,9);Lp=[{k,in:[[a,1],[b,0]]}];Rp=[{t:[m,1]},{t:[k*(a*x+b)-m*x,0]}]}
+  else{let A1,A2;do{const p=ri(1,12),k1=ri(1,6)*(coin(.4)?-1:1),k2=ri(2,5),q=ri(1,12)*(coin()?-1:1);
+      Lp=[{t:[p,0]},{k:k1,in:[[ri(1,5),1],[ri(1,9)*(coin()?-1:1),0]]}];Rp=[{k:k2,in:[[ri(1,5),1],[ri(1,9)*(coin()?-1:1),0]]},{t:[q,0]}];
+      A1=collect(expandParts(Lp,v).all);A2=collect(expandParts(Rp,v).all);
+    }while(coef(A1,1)==coef(A2,1)||Math.abs(coef(A1,1)-coef(A2,1))>12)}
+  const eL=expandParts(Lp,v),eR=expandParts(Rp,v);const cL=collect(eL.all),cR=collect(eR.all);
+  const L=[coef(cL,1),coef(cL,0)],Rr=[coef(cR,1),coef(cR,0)];
+  if(L[0]==Rr[0])return genBrackets();
+  const{steps,r}=solveSteps(L,Rr,v);const pre=[...eL.steps,...eR.steps];
+  pre.push(st('Write out both sides.',`${termsH(eL.all,v)} = ${termsH(eR.all,v)}`));
+  if(eL.all.length>cL.length||eR.all.length>cR.length)pre.push(st('Simplify each side.',`${termsH(cL,v)} = ${termsH(cR,v)}`));
+  const wrong=[];const neg=[...Lp,...Rp].find(p=>p.k!=null&&p.k<0);
+  if(neg){const bad=p=>p.k==null?[p.t]:p.in.map(([c,e],i)=>[(p===neg&&i==1?-1:1)*p.k*c,e]);
+    const bl=collect(Lp.flatMap(bad)),br=collect(Rp.flatMap(bad));const bL=[coef(bl,1),coef(bl,0)],bR=[coef(br,1),coef(br,0)];
+    if(bL[0]!=bR[0])wrong.push({v:(bR[1]-bL[1])/(bL[0]-bR[0]),msg:'A minus in front of a bracket changes the sign of <b>every</b> term inside.'})}
+  return{q:`Solve ${partsH(Lp,v)} = ${partsH(Rp,v)}`,kind:'rat',ans:r,v,allowDec:1,wrong,steps:[...pre,...steps]}
+}
+function coef(list,e){const t=list.find(t=>t[1]==e);return t?t[0]:0}
+function genFracEq(){
+  const v=pick(['x','x','y','n']);const f=pick(['a','b','b','c','c','d']);
+  if(f=='a'||f=='d'){const a=ri(2,12),b=ri(2,12)*(coin(.15)?-1:1);const eq=f=='a'?`${fx(V(v),a)} = ${sg(b)}`:`${sg(b)} = ${fx(V(v),a)}`;
+    return{q:`Solve ${eq}`,kind:'rat',ans:R(a*b),v,wrong:[{v:b/a,msg:`To undo ÷ ${a}, <b>multiply</b> both sides by ${a}.`}],
+      steps:[st(`Multiply both sides by ${a} to get rid of the fraction.`,`${V(v)} = ${sg(b)} × ${a}`),st('Answer',`<b>${V(v)} = ${sg(a*b)}</b>`)]}}
+  if(f=='b'){let a,b,c;do{a=ri(2,8);b=ri(2,9);c=ri(1,12)}while(gcd(a,b)>1);const r=R(b*c,a);
+    return{q:`Solve ${fx(a+V(v),b)} = ${c}`,kind:'rat',ans:r,v,preferMixed:0,
+      steps:[st(`Multiply both sides by ${b}.`,`${a}${V(v)} = ${c} × ${b} = ${b*c}`),st(`Divide both sides by ${a}.`,`${V(v)} = ${fx(b*c,a)}${r.d!=a?' = '+frR(r):''}`),st('Answer',`<b>${V(v)} = ${frR(r)}</b>${r.d>1&&r.n>r.d?' (or '+mixed(r)+')':''}`)]}}
+  let a,b,c,d;do{a=ri(1,6);b=ri(2,9);c=ri(1,9);d=ri(2,9)}while(gcd(a,b)>1||gcd(c,d)>1||(a==1&&coin(.5)));const r=R(b*c,a*d);
+  return{q:`Solve ${fx((a==1?'':a)+V(v),b)} = ${fr(c,d)}`,kind:'rat',ans:r,v,
+    steps:[st('There’s a fraction on each side, so cross multiply.',`${a==1?'':a}${V(v)} × ${d} = ${c} × ${b}`),st('Tidy up.',`${a*d}${V(v)} = ${b*c}`),
+      st(`Divide both sides by ${a*d}.`,`${V(v)} = ${fx(b*c,a*d)}${gcd(b*c,a*d)>1?' = '+frR(r):''}`),st('Answer',`<b>${V(v)} = ${frR(r)}</b>`)]}
+}
+function genForming(){
+  const k=pick(['age2','twice','three','consec','rect','think','tri','money']);const[A,B,C]=two();const X=V('x');
+  const sol=(eqTxt,a,b,c,x)=>[st('Make the equation.',eqTxt),st('Solve it.',`${a}${X}${b?(b>0?' + '+b:' '+MI+' '+(-b)):''} = ${c} → ${a}${X} = ${c-b} → ${X} = ${x}`)];
+  if(k=='age2'){const x=ri(8,40),d=ri(2,9),S=2*x+d,askB=coin();return{q:`${A} is <i>x</i> years old. ${B} is ${d} years older than ${A}. The sum of their ages is ${S}. How old is <b>${askB?B:A}</b>?`,kind:'num',ans:askB?x+d:x,
+    wrong:askB?[{v:x,msg:`That’s ${A}’s age (x). The question asks for ${B}: x + ${d}.`}]:[],
+    steps:[st('Write each age using x.',`${A} = ${X}, &nbsp;${B} = ${X} + ${d}`),...sol(`${X} + ${X} + ${d} = ${S} → 2${X} + ${d} = ${S}`,2,d,S,x),st('Answer the question asked.',`${askB?`${B} = ${x} + ${d} = <b>${x+d}</b>`:`${A} = <b>${x}</b>`}`)]}}
+  if(k=='twice'){const x=ri(5,30),S=3*x,askOld=coin();return{q:`${A} is <i>x</i> years old. ${B} is twice as old as ${A}. The sum of their ages is ${S}. How old is <b>${askOld?B:A}</b>?`,kind:'num',ans:askOld?2*x:x,
+    wrong:askOld?[{v:x,msg:`That’s ${A}’s age. ${B} is twice that.`}]:[],
+    steps:[st('Write each age using x.',`${A} = ${X}, &nbsp;${B} = 2${X}`),st('Make the equation.',`${X} + 2${X} = ${S} → 3${X} = ${S}`),st('Solve it.',`${X} = ${S} ÷ 3 = ${x}`),st('Answer the question asked.',askOld?`${B} = 2 × ${x} = <b>${2*x}</b>`:`${A} = <b>${x}</b>`)]}}
+  if(k=='three'){const x=ri(12,40),d=ri(2,10),S=4*x-d;return{q:`${A} is <i>x</i> years old. ${B} is ${d} years younger than ${A}. ${C} is double ${A}’s age. The sum of their ages is ${S}. How old is <b>${B}</b>?`,kind:'num',ans:x-d,
+    wrong:[{v:x,msg:`That’s ${A}’s age. ${B} is ${d} years younger.`}],
+    steps:[st('Write each age using x.',`${A} = ${X}, &nbsp;${B} = ${X} ${MI} ${d}, &nbsp;${C} = 2${X}`),...sol(`${X} + ${X} ${MI} ${d} + 2${X} = ${S} → 4${X} ${MI} ${d} = ${S}`,4,-d,S,x),st('Answer the question asked.',`${B} = ${x} ${MI} ${d} = <b>${x-d}</b>`)]}}
+  if(k=='consec'){const n=ri(5,60),S=3*n+3,ask=pick(['smallest','largest']);return{q:`The sum of three consecutive numbers is ${S}. What is the <b>${ask}</b> number?`,kind:'num',ans:ask=='smallest'?n:n+2,
+    steps:[st('Consecutive means one after another.',`${X}, &nbsp;${X} + 1, &nbsp;${X} + 2`),...sol(`${X} + ${X} + 1 + ${X} + 2 = ${S} → 3${X} + 3 = ${S}`,3,3,S,n),st('Answer the question asked.',`The numbers are ${n}, ${n+1}, ${n+2}. The ${ask} is <b>${ask=='smallest'?n:n+2}</b>.`)]}}
+  if(k=='rect'){const x=ri(3,30),d=ri(2,12),P=4*x+2*d,ask=pick(['width','length','area']);const ans=ask=='width'?x:ask=='length'?x+d:x*(x+d);
+    return{q:`A rectangular field is ${d} m longer than it is wide. Its perimeter is ${P} m. Find the <b>${ask}</b> of the field.`,kind:'num',ans,unit:ask=='area'?'m²':'m',
+      wrong:ask=='area'?[{v:P,msg:'That’s the perimeter. Area = length × width.'}]:ask=='length'?[{v:x,msg:'That’s the width. The length is '+d+' m more.'}]:[],
+      steps:[st('Let the width be x.',`width = ${X}, &nbsp;length = ${X} + ${d}`),...sol(`${X} + ${X} + ${d} + ${X} + ${X} + ${d} = ${P} → 4${X} + ${2*d} = ${P}`,4,2*d,P,x),
+        st('Answer the question asked.',ask=='width'?`Width = <b>${x} m</b>`:ask=='length'?`Length = ${x} + ${d} = <b>${x+d} m</b>`:`Width ${x} m, length ${x+d} m. Area = ${x} × ${x+d} = <b>${x*(x+d)} m²</b>`)]}}
+  if(k=='think'){const a=ri(2,9),x=ri(2,20),b=ri(1,15)*(coin()?-1:1),c=a*x+b;return{q:`I think of a number, multiply it by ${a} and then ${b>0?'add '+b:'subtract '+(-b)}. The answer is ${c}. What number did I think of?`,kind:'num',ans:x,
+    wrong:[{v:(c+b)/a,msg:'Do the opposite operation to undo each step.'}],
+    steps:[st('Call the number x.',`${a}${X} ${b>0?'+':MI} ${Math.abs(b)} = ${c}`),st('Solve it.',`${a}${X} = ${c-b} → ${X} = ${x}`),st('Answer',`<b>${x}</b>`)]}}
+  if(k=='tri'){let a,b,c,d,x;do{a=ri(2,6);d=ri(1,4);x=ri(2,9);b=ri(1,20);c=a*x+b+d*x}while(c>60);const ask=coin();
+    return{q:`In an isosceles triangle, the two equal sides are (${a}<i>x</i> + ${b}) cm and (${c} ${MI} ${d==1?'':d}<i>x</i>) cm. Find ${ask?'<b>x</b>':'the <b>length of one of the equal sides</b>'}.`,kind:'num',ans:ask?x:a*x+b,unit:ask?'':'cm',
+      wrong:ask?[]:[{v:x,msg:`That’s x. Now put it back in: ${a} × ${x} + ${b}.`}],
+      steps:[st('The two sides are equal, so make an equation.',`${a}${X} + ${b} = ${c} ${MI} ${d==1?'':d}${X}`),st(`Add ${d==1?'':d}${X} to both sides.`,`${a+d}${X} + ${b} = ${c}`),
+        st(`Subtract ${b}, then divide by ${a+d}.`,`${a+d}${X} = ${c-b} → ${X} = ${x}`),st('Answer the question asked.',ask?`<b>${X} = ${x}</b>`:`Side = ${a} × ${x} + ${b} = <b>${a*x+b} cm</b>`)]}}
+  const n=ri(20,90),dk=ri(3,15),dg=ri(2,15),T=3*n+dk-dg;const ask=pick([A,B,C]);const ans=ask==A?n:ask==B?n+dk:n-dg;
+  return{q:`${A} has <i>n</i> pence. ${B} has ${dk}p more than ${A}. ${C} has ${dg}p less than ${A}. Altogether they have ${money(T/100)}. How many pence does <b>${ask}</b> have?`,kind:'num',ans,unit:'p',
+    wrong:ask==A?[]:[{v:n,msg:`That’s ${A}’s amount (n). Now use it to find ${ask}’s.`}],
+    steps:[st('Write each amount using n, in pence.',`${A} = ${V('n')}, &nbsp;${B} = ${V('n')} + ${dk}, &nbsp;${C} = ${V('n')} ${MI} ${dg}`),
+      st('Change the total into pence and make the equation.',`${V('n')} + ${V('n')} + ${dk} + ${V('n')} ${MI} ${dg} = ${T} → 3${V('n')} + ${dk-dg<0?MI+' '+(dg-dk):dk-dg} = ${T}`.replace('+ −','−')),
+      st('Solve it.',`3${V('n')} = ${T-(dk-dg)} → ${V('n')} = ${n}`),st('Answer the question asked.',`${ask} has <b>${ans}p</b>`)]}
+}
+const T6={id:'equations',n:6,title:'Equations',
+ remember:[
+  'Whatever you do to one side, do to the <b>other side</b> too.',
+  'Do the <b>opposite</b>: + ↔ −, × ↔ ÷. Deal with + and − first, then × and ÷.',
+  'Letters on both sides: move the smaller letter term, so the letter stays positive.',
+  'Brackets: expand first, simplify each side, then solve.',
+  'A minus in front of a bracket changes every sign inside: 9 − (2x − 1) = 9 − 2x + 1.',
+  'Fractions: multiply both sides by the bottom number. One fraction on each side → cross multiply.',
+  'Answers can be fractions or negatives. Simplify them: x = '+fr(14,6)+' = '+fr(7,3)+'.',
+  'Word problems: let x be the unknown, write everything using x, make the equation, solve, then <b>answer the question asked</b>.',
+  'Check your answer by putting it back into the equation.'],
+ skills:[
+  {id:'one-side',title:'Letters on one side',goal:'Solve equations like 2x + 5 = 13 (revision of Year 8).',
+   method:['Get the letter term on its own: undo the + or − by doing the opposite to both sides.','Undo the × by dividing both sides.','If the answer is a fraction, leave it as a fraction and simplify.','Check by putting your answer back in.'],
+   watch:[{her:1,t:'The “spot the mistake” question: Toby had 7x − 5 = 5x + 23 → 2x − 5 = 23, then did <b>−5</b>. To undo −5 you <b>add</b> 5: 2x = 28, x = 14.'},{t:'2x − 16 = 7 → 2x = 23 → x = '+fr(23,2)+'. Fraction answers are fine!'}],
+   gen:genOneSide},
+  {id:'both-sides',title:'Letters on both sides',goal:'Solve equations like 3x + 5 = 5x − 7 (revision of Year 8).',
+   method:['Move the letter terms to one side: take away the smaller one from both sides.','Move the numbers to the other side.','Divide to find the letter.','Check by putting it back in.'],
+   watch:[{her:1,t:'14 − 2x = x − 1: you added 2x to both sides to get 14 = 3x − 1, then x = 5 ✓. That’s exactly right.'},{her:1,t:'Toby’s second mistake: 3x + 11 = 41 − 2x. To move −2x you <b>add</b> 2x: 5x + 11 = 41, so x = 6.'}],
+   gen:genBothSides},
+  {id:'brackets',title:'Equations with brackets',goal:'Solve equations with brackets, e.g. 7(2x − 1) = 15 and 3 − 2(3x − 1) = 4(3x + 4).',
+   method:['Expand every bracket (watch the signs).','Simplify each side: collect like terms.','Move the letters to one side and the numbers to the other.','Divide, and simplify the answer.'],
+   watch:[{her:1,t:'Your teacher wrote that there will be <b>2 questions like this in the exam, worth 4 marks each</b>. Show every line.'},
+     {her:1,t:'2x + 3 − x + 5 = 3x + 4x − 6: you got x = '+fr(14,6)+'. Simplify it: <b>'+fr(7,3)+'</b> (or 2'+fr(1,3)+').'},
+     {t:'9 − (2x − 1) = 9 − 2x <b>+ 1</b>. The minus changes both signs inside.'}],
+   gen:genBrackets},
+  {id:'fractions',title:'Equations with fractions',goal:'Solve equations with fractions, e.g. x/3 = 6 and 2x/3 = 3/4.',
+   method:['One fraction: multiply both sides by the bottom number.','A fraction on <b>both</b> sides: cross multiply (top-left × bottom-right = top-right × bottom-left).','Then solve as normal and simplify.'],
+   watch:[{t:fx(V('x'),3)+' = 6 means x ÷ 3 = 6. Undo it by multiplying: x = 18 (not 2).'}],
+   gen:genFracEq},
+  {id:'forming',title:'Forming equations',goal:'Solve problems by forming and solving equations.',
+   method:['Let x be the thing you don’t know (often the smallest or first one).','Write everything else using x.','Make the equation: they add up to the total, or two things are equal.','Solve it.','Answer the <b>actual question</b>. Do they want x, or something made from x?'],
+   watch:[{t:'If they ask for the older person, or the length, work it out from x at the end.'},{t:'Money: change everything into pence first.'}],
+   gen:genForming}]};
+
+const TOPICS=[T1,T2,T3,T4,T5,T6];
+
+/* ================= APP: views, practice, graphs ================= */
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let store={};try{store=JSON.parse(localStorage.getItem('lena-studies')||'{}')||{}}catch(e){store={}}
+const save=()=>{try{localStorage.setItem('lena-studies',JSON.stringify(store))}catch(e){}};
+const starsOf=k=>Math.min(3,(store[k]&&store[k].s)||0);
+const starH=n=>`<span class="stars" aria-label="${n} of 3 stars">${[0,1,2].map(i=>`<span class="${i<n?'on':''}">★</span>`).join('')}</span>`;
+const tidy=h=>String(h).replace(/(\d*)(<span class="fr"><span>(?:(?!<\/span>).)*<\/span><span>(?:(?!<\/span>).)*<\/span><\/span>)([.,:;)?!]?)/g,(m,a,f,p)=>a||p?`<span class="nw">${a}${f}${p}</span>`:m);
+const hashSeed=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)};
+
+/* ---------- graphs ---------- */
+const FIGS={};let figN=0;
+function figH(f){if(!f)return'';const id='f'+(++figN);FIGS[id]=f;
+  return`<div class="fig" data-fig="${id}" role="img" aria-label="${f.type=='travel'?'Distance–time graph':'Scatter graph'}"></div>`}
+const ro=new ResizeObserver(es=>{for(const e of es)drawFig(e.target)});
+function drawFigs(root){root.querySelectorAll('.fig:not([data-on])').forEach(el=>{el.dataset.on=1;ro.observe(el);drawFig(el)})}
+function drawFig(el){const f=FIGS[el.dataset.fig];if(!f)return;const W=Math.floor(el.clientWidth);if(!W||el._w===W)return;el._w=W;
+  const H=Math.round(Math.max(240,Math.min(420,W*.72)));el.style.height=H+'px';el.innerHTML=svgFor(f,W,H)}
+const tickFmt=(v,f,isX)=>isX&&f.type=='travel'?clk(Math.round(v)):(Math.abs(v)>=1000?Math.round(v).toLocaleString('en-GB'):''+round(v,2));
+function svgFor(f,W,H){
+  const small=W<460,L=small?48:62,Rm=14,Tp=12,B=small?42:48,pw=W-L-Rm,ph=H-Tp-B;
+  const X=v=>L+(v-f.x.min)/(f.x.max-f.x.min)*pw,Y=v=>Tp+ph-(v-f.y.min)/(f.y.max-f.y.min)*ph;
+  let s=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  const grid=(ax,isX)=>{let o='',lab='';const n=Math.round((ax.max-ax.min)/ax.minor),len=isX?pw:ph;const showMinor=len/n>=5;
+    const nMaj=Math.round((ax.max-ax.min)/ax.major);const gap=len/nMaj;const every=Math.ceil((isX?(f.type=='travel'?(small?44:52):28):20)/gap);
+    for(let i=0;i<=n;i++){const v=ax.min+i*ax.minor;const q=(v-ax.min)/ax.major,maj=Math.abs(q-Math.round(q))<1e-6;
+      if(!maj&&!showMinor)continue;const c=maj?'gM':'gm';
+      o+=isX?`<line class="${c}" x1="${X(v)}" x2="${X(v)}" y1="${Tp}" y2="${Tp+ph}"/>`:`<line class="${c}" x1="${L}" x2="${L+pw}" y1="${Y(v)}" y2="${Y(v)}"/>`;
+      if(maj&&Math.round(q)%every==0)lab+=isX?`<text class="tk" x="${X(v)}" y="${Tp+ph+16}" text-anchor="middle">${tickFmt(v,f,1)}</text>`
+        :`<text class="tk" x="${L-6}" y="${Y(v)+4}" text-anchor="end">${tickFmt(v,f,0)}</text>`}
+    return o+lab};
+  s+=grid(f.x,1)+grid(f.y,0);
+  s+=`<line class="ax" x1="${L}" y1="${Tp+ph}" x2="${L+pw}" y2="${Tp+ph}"/><line class="ax" x1="${L}" y1="${Tp}" x2="${L}" y2="${Tp+ph}"/>`;
+  s+=`<text class="al" x="${L+pw/2}" y="${H-6}" text-anchor="middle">${esc(f.x.label)}</text>`;
+  s+=`<text class="al" transform="translate(13 ${Tp+ph/2}) rotate(-90)" text-anchor="middle">${esc(f.y.label)}</text>`;
+  if(f.line){const{m,c}=f.line;let x1=f.x.min,x2=f.x.max;const yAt=x=>m*x+c;
+    const xa=(f.y.min-c)/m,xb=(f.y.max-c)/m;const lo=Math.min(xa,xb),hi=Math.max(xa,xb);x1=Math.max(x1,lo);x2=Math.min(x2,hi);
+    s+=`<line class="lbf" x1="${X(x1)}" y1="${Y(yAt(x1))}" x2="${X(x2)}" y2="${Y(yAt(x2))}"/>`}
+  if(f.guide){const g=f.guide,gx=X(g.x),gy=Y(g.y);
+    s+=g.rev?`<path class="gd" d="M${L} ${gy}H${gx}V${Tp+ph}"/>`:`<path class="gd" d="M${gx} ${Tp+ph}V${gy}H${L}"/>`;
+    s+=`<circle class="gdot" cx="${gx}" cy="${gy}" r="5"/>`}
+  if(f.pts){const r=small?4:5;for(const[x,y]of f.pts){const px=X(x),py=Y(y);s+=`<path class="pt" d="M${px-r} ${py-r}L${px+r} ${py+r}M${px-r} ${py+r}L${px+r} ${py-r}"/>`}}
+  if(f.tags)for(const t of f.tags){const px=X(t.x),py=Y(t.y);const right=px<L+pw-30;
+    s+=`<text class="ptag" x="${right?px+9:px-9}" y="${py-8}" text-anchor="${right?'start':'end'}">${t.t}</text>`}
+  if(f.path){for(const i of f.hi||[]){const a=f.path[i],b=f.path[i+1];s+=`<line class="hi" x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}"/>`}
+    s+=`<polyline class="path" points="${f.path.map(([x,y])=>X(x)+','+Y(y)).join(' ')}"/>`;
+    for(const[x,y]of f.path)s+=`<circle class="node" cx="${X(x)}" cy="${Y(y)}" r="3"/>`}
+  return s+'</svg>'}
+
+/* ---------- shared bits ---------- */
+const stepH=(s,i)=>`<li class="${i===undefined?'':'new'}"><span class="st-t">${s.t}</span>${s.m?`<span class="st-m">${s.m}</span>`:''}${figH(s.fig)}</li>`;
+function hintFor(q){if(q.kind=='expr')return'Powers: type x^2, or use the ² button. Example: 6x² − 2x';
+  if(q.kind=='rat')return'Fractions: type 7/3 or 2 1/3. Negatives: −5 or -5.';
+  if(q.money)return'Just the amount, e.g. 12.50';if(q.unit=='min')return'In minutes, e.g. 90';return'Type a number. Units are optional.'}
+function keysH(q){const k=q.kind=='expr'?['²','³','(',')','−']:q.kind=='rat'?['/','−']:[];
+  return k.length?`<div class="keys" aria-label="Symbols">${k.map(c=>`<button type="button" class="key" data-a="key" data-v="${c}">${c}</button>`).join('')}</div>`:''}
+
+/* ---------- home ---------- */
+function bookH(T){const got=T.skills.reduce((a,S)=>a+starsOf(T.id+'-'+S.id),0),max=T.skills.length*3;
+  return`<a class="book" href="#${T.id}"><span class="book-lab"><span class="bn">${T.n}</span><span class="bt">${T.title}</span></span>
+  <span class="book-skills">${T.skills.map(S=>`<span class="bs"><span>${S.title}</span>${starH(starsOf(T.id+'-'+S.id))}</span>`).join('')}</span>
+  <span class="meter"><i style="width:${(got/max*100).toFixed(1)}%"></i></span><span class="mtxt">${got} of ${max} stars</span></a>`}
+function renderHome(){document.title='Lena studies · Maths';
+  const total=TOPICS.reduce((a,T)=>a+T.skills.reduce((b,S)=>b+starsOf(T.id+'-'+S.id),0),0),max=TOPICS.reduce((a,T)=>a+T.skills.length*3,0);
+  app.innerHTML=tidy(`<section class="cover"><div class="cover-in">
+    <div class="intro"><p class="kicker">Year 9 maths · test revision</p><h1>Lena studies</h1>
+      <p class="lede">Six topics from your topic list. In each one: what to remember, the steps, a worked example, then questions to practise. Stuck? Press <b>Show next step</b>.</p>
+      <p class="lede small">Get 3 stars on every skill: answer right without showing the whole solution. <b class="nw">${total} of ${max}</b> so far.</p></div>
+    <div class="label" aria-hidden="true"><div><span>Name</span><b>Lena</b></div><div><span>Subject</span><b>Maths</b></div><div><span>Topics</span><b>1 – 6</b></div></div>
+  </div></section>
+  <section class="band"><div class="books">${TOPICS.map(bookH).join('')}</div>
+  <a class="sheet-link" href="#sheet"><b>Quick revision sheet</b><span>Every “key things to remember”, plus your personal watch-outs, on one page. Read it the night before.</span><span class="arrow">→</span></a></section>`);
+  window.scrollTo(0,0)}
+
+/* ---------- revision sheet ---------- */
+function renderSheet(){document.title='Revision sheet · Lena studies';
+  app.innerHTML=tidy(`<div class="wrap"><a href="#" class="back">← All topics</a>
+  <header class="t-head"><h1>Quick revision sheet</h1></header>
+  <div class="sheet">${TOPICS.map(T=>`<section class="card"><h2><span class="tn sm">${T.n}</span> ${T.title}</h2><ul class="rem">${T.remember.map(r=>`<li>${r}</li>`).join('')}</ul></section>`).join('')}</div>
+  <section class="card watch big"><h2>Your personal watch-outs</h2><p class="muted">From the marking on your homework.</p>
+   ${TOPICS.map(T=>{const n=T.skills.flatMap(S=>S.watch.filter(w=>w.her&&!/✓/.test(w.t)));return n.length?`<h3>${T.title}</h3>${n.map(w=>`<div class="note her"><p>${w.t}</p></div>`).join('')}`:''}).join('')}</section></div>`);
+  window.scrollTo(0,0)}
+
+/* ---------- topic ---------- */
+let ex={},pr={};
+function renderTopic(T,S,keepScroll){document.title=`${T.title} · Lena studies`;
+  const open=sessionGet('rem-'+T.id)!=='0';
+  app.innerHTML=tidy(`<div class="wrap">
+  <a href="#" class="back">← All topics</a>
+  <header class="t-head"><span class="tn">${T.n}</span><h1>${T.title}</h1></header>
+  <nav class="tabs" aria-label="Skills">${T.skills.map(s=>`<a href="#${T.id}-${s.id}" class="tab${s===S?' on':''}" ${s===S?'aria-current="page"':''}><span>${s.title}</span>${starH(starsOf(T.id+'-'+s.id))}</a>`).join('')}</nav>
+  <details class="remember" ${open?'open':''} data-t="${T.id}"><summary>Key things to remember: ${T.title.toLowerCase()}</summary><ul class="rem">${T.remember.map(r=>`<li>${r}</li>`).join('')}</ul></details>
+  <div class="skill-grid">
+   <div class="learn">
+    <p class="goal"><span>You need to</span>${S.goal}<button class="jump" data-a="jump">Jump to practice ↓</button></p>
+    <section class="card"><h2>The steps</h2><ol class="method">${S.method.map(m=>`<li>${m}</li>`).join('')}</ol></section>
+    <section class="card" id="ex"></section>
+    <section class="card watch"><h2>Watch out</h2>${S.watch.map(w=>`<div class="note${w.her?' her':''}">${w.her?'<span class="from">From your homework</span>':''}<p>${w.t}</p></div>`).join('')}</section>
+   </div>
+   <div class="practise"><section class="card pr" id="pr"></section></div>
+  </div></div>`);
+  ex={S,seed:hashSeed(T.id+S.id),k:1};ex.q=withSeed(ex.seed,S.gen);drawEx();
+  newPractice(T,S);if(!keepScroll)window.scrollTo(0,0)}
+function sessionGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function sessionSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+
+function drawEx(){const q=ex.q,el=$('#ex');const all=ex.k>=q.steps.length;
+  el.innerHTML=tidy(`<h2>Worked example</h2><div class="q">${q.q}</div>${figH(q.fig)}${q.choices?`<p class="choices">Options: ${q.choices.map(c=>`<span>${c}</span>`).join('')}</p>`:''}
+   <ol class="steps">${q.steps.slice(0,ex.k).map(s=>stepH(s)).join('')}</ol>
+   <div class="btns">${all?`<button class="btn" data-a="exnew">Another example</button>`:`<button class="btn pri" data-a="exnext">Show next step</button><button class="btn" data-a="exall">Show all steps</button>`}</div>`);
+  drawFigs(el)}
+
+function newPractice(T,S){pr={T,S,key:T.id+'-'+S.id,q:S.gen(),k:0,done:false,tries:0};drawPr()}
+function drawPr(){const q=pr.q,el=$('#pr');
+  el.innerHTML=tidy(`<div class="pr-head"><h2>Your turn</h2>${q.tag?`<span class="tag">${q.tag}</span>`:''}<span class="pr-stars">${starH(starsOf(pr.key))}</span></div>
+   <div class="q">${q.q}</div>${figH(q.fig)}
+   ${q.kind=='mcq'?`<div class="mcq">${q.choices.map(c=>`<button class="opt" data-a="opt" data-v="${esc(c)}">${c}</button>`).join('')}</div>`
+   :`<form class="ans" novalidate><label for="ansIn">Your answer${q.unit?` <span class="unit">(${esc(q.unit)})</span>`:''}</label>
+     <div class="row"><input id="ansIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"><button class="btn pri" type="submit">Check</button></div>
+     ${keysH(q)}<p class="hint">${hintFor(q)}</p></form>`}
+   <div class="fb" aria-live="polite"></div>
+   <ol class="steps" id="prSteps"></ol>
+   <div class="btns"><button class="btn" data-a="hint">Help: show the first step</button><button class="btn" data-a="newq">New question</button></div>`);
+  drawFigs(el)}
+function setFb(r){const fb=$('#pr .fb');if(!fb)return;
+  const head={ok:'✓ Correct!',nearly:'Nearly there.',no:'Not quite.',bad:'Hmm.',empty:''}[r.s];
+  fb.className='fb '+r.s;fb.innerHTML=tidy(`${head?`<b>${head}</b> `:''}${r.msg||''}${r.note?' '+r.note:''}${r.star?' <span class="plus">+1 star</span>':''}${r.s=='ok'?`<div><button class="btn pri" data-a="newq" id="nextQ">Next question →</button></div>`:''}`);
+  if(r.s=='ok'){const n=$('#nextQ');n&&n.focus({preventScroll:true})}}
+function revealStep(){const q=pr.q;if(pr.k>=q.steps.length)return;const ol=$('#prSteps');
+  ol.insertAdjacentHTML('beforeend',tidy(stepH(q.steps[pr.k],pr.k)));pr.k++;drawFigs(ol);
+  const b=$('#pr [data-a="hint"]');if(b){b.textContent=pr.k>=q.steps.length?'All steps shown':'Show next step';b.disabled=pr.k>=q.steps.length}}
+function award(){if(pr.done)return false;pr.done=true;if(pr.k>=pr.q.steps.length)return false;
+  store[pr.key]=store[pr.key]||{s:0};store[pr.key].s++;save();
+  const n=starsOf(pr.key);const ps=$('#pr .pr-stars');if(ps)ps.innerHTML=starH(n);
+  const tab=document.querySelector(`.tab[href="#${pr.key}"] .stars`);if(tab)tab.outerHTML=starH(n);return true}
+function submit(){const inp=$('#ansIn');if(!inp)return;if(pr.done){newPractice(pr.T,pr.S);return}
+  const r=check(pr.q,inp.value);if(r.s=='ok')r.star=award();else if(r.s=='no'){pr.tries++;if(pr.tries>=2&&pr.k<pr.q.steps.length)r.msg+=' Try pressing “Show next step”.'}
+  setFb(r)}
+
+/* ---------- events ---------- */
+app.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+  if(a=='exnext'){ex.k++;drawEx()}
+  else if(a=='exall'){ex.k=ex.q.steps.length;drawEx()}
+  else if(a=='exnew'){ex.seed++;ex.k=1;ex.q=withSeed(ex.seed,ex.S.gen);drawEx()}
+  else if(a=='hint')revealStep();
+  else if(a=='jump'){const p=$('#pr');p&&p.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+  else if(a=='newq'){newPractice(pr.T,pr.S);const i=$('#ansIn');i&&i.focus({preventScroll:true})}
+  else if(a=='key'){const i=$('#ansIn');if(!i)return;const c=b.dataset.v=='−'?'-':b.dataset.v;const p=i.selectionStart??i.value.length,q=i.selectionEnd??p;
+    i.value=i.value.slice(0,p)+c+i.value.slice(q);i.focus();i.setSelectionRange(p+c.length,p+c.length)}
+  else if(a=='opt'){if(pr.done)return;const r=check(pr.q,b.dataset.v);
+    if(r.s=='ok'){b.classList.add('right');r.star=award();app.querySelectorAll('#pr .opt').forEach(o=>o.disabled=true)}else{b.classList.add('wrong');b.disabled=true}
+    setFb(r)}});
+app.addEventListener('submit',e=>{e.preventDefault();submit()});
+app.addEventListener('toggle',e=>{const d=e.target;if(d.classList&&d.classList.contains('remember'))sessionSet('rem-'+d.dataset.t,d.open?'1':'0')},true);
+
+function route(){const h=decodeURIComponent(location.hash.slice(1));
+  if(h=='sheet')return renderSheet();
+  const T=TOPICS.find(t=>h===t.id||h.startsWith(t.id+'-'));
+  if(T){const sid=h.slice(T.id.length+1);const S=T.skills.find(s=>s.id===sid)||T.skills[0];
+    const same=pr.T===T;renderTopic(T,S,same);if(same){const g=document.querySelector('.tabs');g&&g.scrollIntoView({block:'start'})}return}
+  renderHome()}
+window.addEventListener('hashchange',route);
+route();
+
+})();
+</script>
+</body>
+</html>
